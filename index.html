@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Instituto Raízes Vivas – Transformando vidas através da educação, esporte e cultura na Comunidade do Sapateiro, Rio de Janeiro." />
+  <title>ONG</title>
+
+  <!-- Google Fonts: Playfair Display (titulos) + DM Sans (corpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Phosphor Icons (CDN) -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR — fixo no topo com toggle dark mode e menu hamburguer
+  ============================================================ -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container navbar__inner">
+
+      <!-- Logotipo -->
+      <a href="#home" class="navbar__logo" aria-label="Inicio — Instituto Raizes Vivas">
+        <span class="logo-icon" aria-hidden="true">🌱</span>
+        <span class="logo-text">ONG <strong>ONG</strong></span>
+      </a>
+
+      <!-- Navegacao principal desktop -->
+      <nav class="navbar__nav" id="main-nav" aria-label="Navegacao principal">
+        <ul class="nav-list" role="list">
+          <li><a href="#sobre"    class="nav-link">Sobre</a></li>
+          <li><a href="#missao"   class="nav-link">Missão</a></li>
+          <li><a href="#projetos" class="nav-link">Projetos</a></li>
+          <li><a href="#galeria"  class="nav-link">Galeria</a></li>
+          <li><a href="#ajudar"   class="nav-link">Como Ajudar</a></li>
+          <li><a href="#contato"  class="nav-link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <!-- Controles: dark mode + hamburguer -->
+      <div class="navbar__controls">
+        <button class="btn-icon" id="theme-toggle" aria-label="Alternar modo escuro">
+          <i class="ph ph-sun"  id="icon-sun"  aria-hidden="true"></i>
+          <i class="ph ph-moon" id="icon-moon" aria-hidden="true"></i>
+        </button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+          <span class="hamburger__bar"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Overlay menu mobile -->
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         SECAO 1 — HOME / HERO com carrossel
+    ============================================================ -->
+    <section class="hero" id="home" aria-labelledby="hero-heading">
+
+      <!-- Carrossel de slides -->
+      <div class="hero__carousel" id="hero-carousel" aria-live="polite">
+
+        <!-- Slide 1 -->
+        <div class="hero__slide hero__slide--1 is-active" aria-hidden="false">
+          <div class="hero__overlay"></div>
+          <div class="hero__content container">
+            <span class="hero__badge">Desde 2010 na Comunidade do Sapateiro</span>
+            <h1 class="hero__heading" id="hero-heading">
+              Raízes que<br/><em>transformam</em><br/>vidas
+            </h1>
+            <p class="hero__sub">
+              O Instituto Raízes Vivas acredita que toda criança e jovem tem o direito à
+              educação de qualidade, ao esporte e à cultura — independente de onde nasceu.
+            </p>
+            <div class="hero__actions">
+              <a href="#sobre"    class="btn btn--primary">Conheça o Instituto</a>
+              <a href="#projetos" class="btn btn--outline">Nossos Projetos</a>
+              <a href="#ajudar"   class="btn btn--ghost">Como Ajudar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero__slide hero__slide--2" aria-hidden="true">
+          <div class="hero__overlay"></div>
+          <div class="hero__content container">
+            <span class="hero__badge">Esporte que educa</span>
+            <h1 class="hero__heading">Além da<br/><em>quadra</em>,<br/>para a vida</h1>
+            <p class="hero__sub">
+              Nosso projeto de vôlei já levou mais de 300 jovens ao esporte organizado,
+              desenvolvendo disciplina, trabalho em equipe e sonhos.
+            </p>
+            <div class="hero__actions">
+              <a href="#projetos" class="btn btn--primary">Ver Projetos</a>
+              <a href="#ajudar"   class="btn btn--outline">Seja Voluntário</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero__slide hero__slide--3" aria-hidden="true">
+          <div class="hero__overlay"></div>
+          <div class="hero__content container">
+            <span class="hero__badge">Comunidade unida</span>
+            <h1 class="hero__heading">Juntos<br/><em>somos</em><br/>mais fortes</h1>
+            <p class="hero__sub">
+              Parcerias, voluntariado e apoio institucional são os pilares que sustentam
+              nosso trabalho. Faça parte dessa corrente do bem.
+            </p>
+            <div class="hero__actions">
+              <a href="#ajudar"  class="btn btn--primary">Como Ajudar</a>
+              <a href="#contato" class="btn btn--outline">Entre em Contato</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /hero__carousel -->
+
+      <!-- Controles do carrossel -->
+      <div class="hero__carousel-controls" aria-label="Controles do carrossel">
+        <button class="carousel-btn" id="prev-slide" aria-label="Slide anterior">
+          <i class="ph ph-caret-left" aria-hidden="true"></i>
+        </button>
+        <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Slides">
+          <button class="dot is-active" role="tab" aria-selected="true"  aria-label="Slide 1"></button>
+          <button class="dot"           role="tab" aria-selected="false" aria-label="Slide 2"></button>
+          <button class="dot"           role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        </div>
+        <button class="carousel-btn" id="next-slide" aria-label="Proximo slide">
+          <i class="ph ph-caret-right" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- Frase de destaque -->
+      <div class="hero__phrase" aria-label="Frase de destaque">
+        <span>✦ Educação</span><span>✦ Esporte</span><span>✦ Cultura</span><span>✦ Comunidade</span>
+      </div>
+
+    </section><!-- /hero -->
+
+
+    <!-- ============================================================
+         SECAO 2 — SOBRE NOS
+    ============================================================ -->
+    <section class="section sobre" id="sobre" aria-labelledby="sobre-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">Quem somos</span>
+          <h2 class="section-title" id="sobre-heading">Sobre o Instituto<br/><em>Raízes Vivas</em></h2>
+        </div>
+
+        <div class="sobre__grid">
+
+          <!-- Bloco de texto -->
+          <div class="sobre__text reveal">
+            <h3 class="sobre__subtitle">Nossa história</h3>
+            <p>
+              O Instituto Raízes Vivas nasceu em 2010 da vontade de um grupo de moradores da
+              <strong>Comunidade do Sapateiro</strong>, no Complexo da Maré, Rio de Janeiro. Diante da
+              ausência de políticas públicas consistentes e da vulnerabilidade social enfrentada por
+              crianças e jovens da região, os fundadores decidiram agir.
+            </p>
+            <p>
+              O que começou como uma escolinha de vôlei em um campinho improvisado tornou-se, ao longo de
+              mais de uma década, uma das organizações de maior referência em promoção social na Zona Norte
+              carioca. Hoje atendemos <strong>mais de 450 pessoas por mês</strong> com projetos nas áreas
+              de esporte, educação, cultura e assistência social.
+            </p>
+            <p>
+              Nosso nome carrega um símbolo: as raízes representam a identidade da comunidade — suas
+              histórias, lutas e pertencimento. "Vivas" porque essa identidade pulsa, resiste e floresce,
+              mesmo em meio às adversidades.
+            </p>
+
+            <h3 class="sobre__subtitle" style="margin-top:2rem;">Contexto de criação</h3>
+            <p>
+              A ausência de espaços de lazer seguros, o alto índice de evasão escolar e o recrutamento de
+              jovens pelo crime organizado foram os principais motivadores para a criação do instituto.
+              Os fundadores acreditavam — e continuam acreditando — que o esporte e a cultura são pontes
+              poderosas para a transformação social.
+            </p>
+
+            <!-- Numeros impactantes com contador animado -->
+            <div class="sobre__stats" aria-label="Numeros do instituto">
+              <div class="stat reveal">
+                <span class="stat__num" data-target="450">0</span><span class="stat__plus">+</span>
+                <span class="stat__label">atendidos/mês</span>
+              </div>
+              <div class="stat reveal">
+                <span class="stat__num" data-target="14">0</span>
+                <span class="stat__label">anos de atuação</span>
+              </div>
+              <div class="stat reveal">
+                <span class="stat__num" data-target="12">0</span>
+                <span class="stat__label">projetos ativos</span>
+              </div>
+              <div class="stat reveal">
+                <span class="stat__num" data-target="60">0</span><span class="stat__plus">+</span>
+                <span class="stat__label">voluntários</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar de informacoes -->
+          <aside class="sobre__info reveal">
+
+            <div class="info-card">
+              <i class="ph ph-map-pin" aria-hidden="true"></i>
+              <div>
+                <strong>Localização</strong>
+                <p>Comunidade do Sapateiro<br/>Complexo da Maré, Rio de Janeiro — RJ</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <i class="ph ph-users-three" aria-hidden="true"></i>
+              <div>
+                <strong>Público atendido</strong>
+                <p>Crianças (6–12), adolescentes (13–17), jovens adultos (18–24) e famílias em situação de vulnerabilidade social.</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <i class="ph ph-calendar-check" aria-hidden="true"></i>
+              <div>
+                <strong>Fundação</strong>
+                <p>Março de 2010, por moradores da própria comunidade.</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <i class="ph ph-certificate" aria-hidden="true"></i>
+              <div>
+                <strong>Reconhecimento</strong>
+                <p>Certificada como OSCIP (Organização da Sociedade Civil de Interesse Público) desde 2014.</p>
+              </div>
+            </div>
+
+            <!-- Foto simulada -->
+            <div class="sobre__photo-placeholder" aria-hidden="true">
+              <span>📸 Equipe Raízes Vivas, 2024</span>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section><!-- /sobre -->
+
+
+    <!-- ============================================================
+         SECAO 3 — MISSAO, VISAO E VALORES
+    ============================================================ -->
+    <section class="section missao" id="missao" aria-labelledby="missao-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">Nossos princípios</span>
+          <h2 class="section-title" id="missao-heading">Missão, Visão<br/><em>e Valores</em></h2>
+        </div>
+
+        <!-- Cards MVV exibidos em grid visual -->
+        <div class="mvv-grid">
+
+          <article class="mvv-card mvv-card--missao reveal" aria-labelledby="missao-card-title">
+            <div class="mvv-card__icon" aria-hidden="true"><i class="ph ph-heart"></i></div>
+            <h3 class="mvv-card__title" id="missao-card-title">Missão</h3>
+            <p class="mvv-card__text">
+              Promover o desenvolvimento humano integral de crianças, adolescentes e jovens em situação de
+              vulnerabilidade social na Comunidade do Sapateiro, por meio do esporte, da educação e da
+              cultura, fortalecendo vínculos familiares e comunitários.
+            </p>
+          </article>
+
+          <article class="mvv-card mvv-card--visao reveal" aria-labelledby="visao-card-title">
+            <div class="mvv-card__icon" aria-hidden="true"><i class="ph ph-eye"></i></div>
+            <h3 class="mvv-card__title" id="visao-card-title">Visão</h3>
+            <p class="mvv-card__text">
+              Ser reconhecida até 2030 como referência nacional em transformação social através do esporte
+              e da cultura, inspirando outras comunidades a criarem suas próprias redes de apoio e
+              empoderamento local.
+            </p>
+          </article>
+
+          <article class="mvv-card mvv-card--valores reveal" aria-labelledby="valores-card-title">
+            <div class="mvv-card__icon" aria-hidden="true"><i class="ph ph-star"></i></div>
+            <h3 class="mvv-card__title" id="valores-card-title">Valores</h3>
+            <ul class="mvv-card__list" role="list">
+              <li><i class="ph ph-check-circle" aria-hidden="true"></i> Pertencimento e identidade comunitária</li>
+              <li><i class="ph ph-check-circle" aria-hidden="true"></i> Equidade e inclusão sem distinções</li>
+              <li><i class="ph ph-check-circle" aria-hidden="true"></i> Transparência e ética na gestão</li>
+              <li><i class="ph ph-check-circle" aria-hidden="true"></i> Respeito à diversidade e direitos humanos</li>
+              <li><i class="ph ph-check-circle" aria-hidden="true"></i> Colaboração e construção coletiva</li>
+              <li><i class="ph ph-check-circle" aria-hidden="true"></i> Alegria como motor de transformação</li>
+            </ul>
+          </article>
+
+        </div>
+
+      </div>
+    </section><!-- /missao -->
+
+
+    <!-- ============================================================
+         SECAO 4 — PROJETOS / SERVICOS
+    ============================================================ -->
+    <section class="section projetos" id="projetos" aria-labelledby="projetos-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">O que fazemos</span>
+          <h2 class="section-title" id="projetos-heading">Nossos<br/><em>Projetos</em></h2>
+          <p class="section-desc">Cada projeto nasce de uma necessidade real da comunidade, construído com ela e para ela.</p>
+        </div>
+
+        <!-- Abas de navegacao entre projetos -->
+        <div class="projetos__tabs" role="tablist" aria-label="Categorias de projetos">
+          <button class="proj-tab is-active" role="tab" aria-selected="true"  data-tab="esporte"  aria-controls="tab-esporte">
+            <i class="ph ph-volleyball" aria-hidden="true"></i> Esporte
+          </button>
+          <button class="proj-tab" role="tab" aria-selected="false" data-tab="social"   aria-controls="tab-social">
+            <i class="ph ph-hands-clapping" aria-hidden="true"></i> Ações Sociais
+          </button>
+          <button class="proj-tab" role="tab" aria-selected="false" data-tab="educacao" aria-controls="tab-educacao">
+            <i class="ph ph-book-open-text" aria-hidden="true"></i> Educação
+          </button>
+          <button class="proj-tab" role="tab" aria-selected="false" data-tab="eventos"  aria-controls="tab-eventos">
+            <i class="ph ph-confetti" aria-hidden="true"></i> Eventos
+          </button>
+        </div>
+
+        <!-- Tab: Esporte -->
+        <div class="proj-panel is-active" id="tab-esporte" role="tabpanel">
+          <div class="proj-panel__inner reveal">
+            <div class="proj-panel__text">
+              <span class="proj-tag">🏐 Projeto Esportivo</span>
+              <h3 class="proj-title">Vôlei que Voa</h3>
+              <p>Fundado em 2010 como o primeiro projeto do instituto, o <strong>Vôlei que Voa</strong> oferece
+              treinamento gratuito de voleibol três vezes por semana para crianças e adolescentes de 8 a 17 anos.
+              Desenvolvemos disciplina, respeito, trabalho em equipe e autoestima.</p>
+              <p>Formamos mais de <strong>50 atletas</strong> com carreira esportiva e tivemos três representantes
+              em seleções estaduais juvenis. O projeto conta com técnico profissional e material esportivo completo.</p>
+              <div class="proj-info-pills">
+                <span class="pill"><i class="ph ph-users"             aria-hidden="true"></i> 120 jovens ativos</span>
+                <span class="pill"><i class="ph ph-calendar"          aria-hidden="true"></i> Seg, Qua e Sex</span>
+                <span class="pill"><i class="ph ph-clock"             aria-hidden="true"></i> 7h às 21h</span>
+                <span class="pill"><i class="ph ph-gender-intersex"   aria-hidden="true"></i> Misto (8–17 anos)</span>
+              </div>
+            </div>
+            <div class="proj-panel__images">
+              <div class="proj-img proj-img--1" role="img" aria-label="Treino de volei"></div>
+              <div class="proj-img proj-img--2" role="img" aria-label="Torneio comunitario"></div>
+              <div class="proj-img proj-img--3" role="img" aria-label="Comemoracao do time"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Social -->
+        <div class="proj-panel" id="tab-social" role="tabpanel" hidden>
+          <div class="proj-panel__inner reveal">
+            <div class="proj-panel__text">
+              <span class="proj-tag">🤝 Ações Sociais</span>
+              <h3 class="proj-title">Rede Solidária Maré</h3>
+              <p>A <strong>Rede Solidária Maré</strong> coordena ações de assistência direta: distribuição mensal
+              de cestas básicas, encaminhamento para benefícios sociais, apoio jurídico gratuito em parceria com
+              faculdades de direito e acompanhamento psicossocial.</p>
+              <p>Nossa equipe de assistentes sociais e psicólogos voluntários realiza <strong>atendimentos
+              semanais</strong> e articula a rede de proteção social local.</p>
+              <div class="proj-info-pills">
+                <span class="pill"><i class="ph ph-users"    aria-hidden="true"></i> 200 famílias/mês</span>
+                <span class="pill"><i class="ph ph-basket"   aria-hidden="true"></i> Cestas mensais</span>
+                <span class="pill"><i class="ph ph-heartbeat" aria-hidden="true"></i> Apoio psicossocial</span>
+                <span class="pill"><i class="ph ph-scales"   aria-hidden="true"></i> Assessoria jurídica</span>
+              </div>
+            </div>
+            <div class="proj-panel__images">
+              <div class="proj-img proj-img--4" role="img" aria-label="Distribuicao de cestas"></div>
+              <div class="proj-img proj-img--5" role="img" aria-label="Atendimento social"></div>
+              <div class="proj-img proj-img--6" role="img" aria-label="Familia assistida"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Educacao -->
+        <div class="proj-panel" id="tab-educacao" role="tabpanel" hidden>
+          <div class="proj-panel__inner reveal">
+            <div class="proj-panel__text">
+              <span class="proj-tag">📚 Apoio Educacional</span>
+              <h3 class="proj-title">Aprender para Crescer</h3>
+              <p>O <strong>Aprender para Crescer</strong> oferece reforço escolar gratuito para alunos do ensino
+              fundamental e médio, com foco em Português, Matemática, Ciências e preparação para o ENEM.
+              Também oferecemos letramento digital e cursos de informática básica.</p>
+              <p>Em 2023, <strong>94% dos alunos</strong> participantes obtiveram melhora significativa nas notas
+              escolares. Parceria com universidades federais garante monitores qualificados.</p>
+              <div class="proj-info-pills">
+                <span class="pill"><i class="ph ph-student"        aria-hidden="true"></i> 180 estudantes</span>
+                <span class="pill"><i class="ph ph-calendar"       aria-hidden="true"></i> Seg a Sex</span>
+                <span class="pill"><i class="ph ph-laptop"         aria-hidden="true"></i> Inclusão digital</span>
+                <span class="pill"><i class="ph ph-graduation-cap" aria-hidden="true"></i> Prep. ENEM</span>
+              </div>
+            </div>
+            <div class="proj-panel__images">
+              <div class="proj-img proj-img--7" role="img" aria-label="Aula de reforco"></div>
+              <div class="proj-img proj-img--8" role="img" aria-label="Aula de informatica"></div>
+              <div class="proj-img proj-img--9" role="img" aria-label="Alunos estudando"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Eventos -->
+        <div class="proj-panel" id="tab-eventos" role="tabpanel" hidden>
+          <div class="proj-panel__inner reveal">
+            <div class="proj-panel__text">
+              <span class="proj-tag">🎉 Eventos Comunitários</span>
+              <h3 class="proj-title">Festa da Comunidade</h3>
+              <p>Ao longo do ano, o Instituto organiza <strong>eventos culturais e comunitários</strong> que
+              celebram a identidade da Maré: festivais de música, feiras de artesanato, torneios esportivos,
+              Dia das Crianças, Natal Solidário e a grande Festa Junina da Comunidade.</p>
+              <p>Em 2023, nossa Festa Junina reuniu mais de <strong>1.200 pessoas</strong> em um dia inteiro
+              de programação gratuita.</p>
+              <div class="proj-info-pills">
+                <span class="pill"><i class="ph ph-music-notes" aria-hidden="true"></i> Festivais culturais</span>
+                <span class="pill"><i class="ph ph-tree"        aria-hidden="true"></i> Festa Junina</span>
+                <span class="pill"><i class="ph ph-gift"        aria-hidden="true"></i> Natal Solidário</span>
+                <span class="pill"><i class="ph ph-trophy"      aria-hidden="true"></i> Torneios esportivos</span>
+              </div>
+            </div>
+            <div class="proj-panel__images">
+              <div class="proj-img proj-img--10" role="img" aria-label="Festa junina"></div>
+              <div class="proj-img proj-img--11" role="img" aria-label="Festival de musica"></div>
+              <div class="proj-img proj-img--12" role="img" aria-label="Torneio esportivo"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- /projetos -->
+
+
+    <!-- ============================================================
+         SECAO 5 — GALERIA
+    ============================================================ -->
+    <section class="section galeria" id="galeria" aria-labelledby="galeria-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">Memórias e momentos</span>
+          <h2 class="section-title" id="galeria-heading">Nossa<br/><em>Galeria</em></h2>
+          <p class="section-desc">Clique em qualquer imagem para ampliar.</p>
+        </div>
+
+        <!-- Filtros da galeria -->
+        <div class="galeria__filters reveal" role="group" aria-label="Filtrar galeria">
+          <button class="filter-btn is-active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="esporte">Esporte</button>
+          <button class="filter-btn" data-filter="educacao">Educação</button>
+          <button class="filter-btn" data-filter="eventos">Eventos</button>
+          <button class="filter-btn" data-filter="social">Social</button>
+        </div>
+
+        <!-- Grid responsivo de galeria -->
+        <div class="galeria__grid" id="galeria-grid" role="list">
+
+          <button class="galeria__item reveal" data-category="esporte" data-caption="Treino de vôlei — Turma sub-14" aria-label="Ver foto: Treino de vôlei">
+            <div class="galeria__thumb g-img--1"></div>
+            <div class="galeria__overlay"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></div>
+          </button>
+
+          <button class="galeria__item reveal galeria__item--tall" data-category="eventos" data-caption="Festa Junina 2023 — mais de 1.200 pessoas!" aria-label="Ver foto: Festa Junina 2023">
+            <div class="galeria__thumb g-img--2"></div>
+            <div class="galeria__overlay"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></div>
+          </button>
+
+          <button class="galeria__item reveal" data-category="educacao" data-caption="Aula de reforço escolar — turma de Matemática" aria-label="Ver foto: Aula de reforço escolar">
+            <div class="galeria__thumb g-img--3"></div>
+            <div class="galeria__overlay"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></div>
+          </button>
+
+          <button class="galeria__item reveal" data-category="social" data-caption="Distribuição de cestas básicas — dezembro 2023" aria-label="Ver foto: Distribuição de cestas">
+            <div class="galeria__thumb g-img--4"></div>
+            <div class="galeria__overlay"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></div>
+          </button>
+
+          <button class="galeria__item reveal galeria__item--wide" data-category="esporte" data-caption="Final do Torneio Intercomunitário — time campeão!" aria-label="Ver foto: Final do Torneio">
+            <div class="galeria__thumb g-img--5"></div>
+            <div class="galeria__overlay"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></div>
+          </button>
+
+          <button class="galeria__item reveal" data-category="educacao" data-caption="Formatura do curso de informática — turma 2023" aria-label="Ver foto: Formatura informática">
+            <div class="galeria__thumb g-img--6"></div>
+            <div class="galeria__overlay"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></div>
+          </button>
+
+          <button class="galeria__item reveal" data-category="eventos" data-caption="Natal Solidário — 300 crianças presenteadas" aria-label="Ver foto: Natal Solidário">
+            <div class="galeria__thumb g-img--7"></div>
+            <div class="galeria__overlay"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></div>
+          </button>
+
+          <button class="galeria__item reveal" data-category="social" data-caption="Mutirão de limpeza e pintura — rua principal" aria-label="Ver foto: Mutirão de limpeza">
+            <div class="galeria__thumb g-img--8"></div>
+            <div class="galeria__overlay"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i></div>
+          </button>
+
+        </div><!-- /galeria__grid -->
+
+      </div>
+    </section><!-- /galeria -->
+
+
+    <!-- Modal lightbox da galeria -->
+    <div class="modal" id="galeria-modal" role="dialog" aria-modal="true" aria-labelledby="modal-caption" hidden>
+      <button class="modal__close" id="modal-close" aria-label="Fechar imagem">
+        <i class="ph ph-x" aria-hidden="true"></i>
+      </button>
+      <div class="modal__content">
+        <div class="modal__img-wrap" id="modal-img-wrap"></div>
+        <p class="modal__caption" id="modal-caption"></p>
+      </div>
+      <button class="modal__nav modal__nav--prev" id="modal-prev" aria-label="Imagem anterior">
+        <i class="ph ph-caret-left" aria-hidden="true"></i>
+      </button>
+      <button class="modal__nav modal__nav--next" id="modal-next" aria-label="Proxima imagem">
+        <i class="ph ph-caret-right" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="modal__overlay" id="modal-overlay" aria-hidden="true"></div>
+
+
+    <!-- ============================================================
+         SECAO 6 — COMO AJUDAR
+    ============================================================ -->
+    <section class="section ajudar" id="ajudar" aria-labelledby="ajudar-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">Faça parte</span>
+          <h2 class="section-title" id="ajudar-heading">Como<br/><em>Ajudar</em></h2>
+          <p class="section-desc">Existem muitas formas de transformar realidades. Escolha a que faz mais sentido para você.</p>
+        </div>
+
+        <div class="ajudar__grid">
+
+          <!-- Card: Parcerias -->
+          <article class="ajudar-card reveal" aria-labelledby="parcerias-title">
+            <div class="ajudar-card__icon" aria-hidden="true"><i class="ph ph-handshake"></i></div>
+            <h3 class="ajudar-card__title" id="parcerias-title">Parcerias Institucionais</h3>
+            <p>Empresas, fundações e institutos que queiram associar sua marca a um propósito real. Oferecemos
+            visibilidade, relatórios de impacto e experiências imersivas na comunidade.</p>
+            <ul class="ajudar-card__list" role="list">
+              <li>Patrocínio de projetos específicos</li>
+              <li>Doação de materiais e equipamentos</li>
+              <li>Cessão de espaço e infraestrutura</li>
+              <li>Apoio técnico e de capacitação</li>
+            </ul>
+            <a href="#contato" class="btn btn--primary btn--sm">Quero ser parceiro</a>
+          </article>
+
+          <!-- Card: Voluntariado (destaque) -->
+          <article class="ajudar-card ajudar-card--destaque reveal" aria-labelledby="voluntariado-title">
+            <div class="ajudar-card__badge">Mais procurado</div>
+            <div class="ajudar-card__icon" aria-hidden="true"><i class="ph ph-hand-heart"></i></div>
+            <h3 class="ajudar-card__title" id="voluntariado-title">Voluntariado</h3>
+            <p>Doe seu tempo e talento. Precisamos de professores, psicólogos, assistentes sociais, designers,
+            comunicadores, técnicos esportivos e tantos outros profissionais.</p>
+            <ul class="ajudar-card__list" role="list">
+              <li>Mínimo de 4h semanais</li>
+              <li>Presencial ou remoto</li>
+              <li>Certificado de voluntariado</li>
+              <li>Treinamento inicial garantido</li>
+            </ul>
+            <a href="#contato" class="btn btn--primary btn--sm">Quero ser voluntário</a>
+          </article>
+
+          <!-- Card: Doacao -->
+          <article class="ajudar-card reveal" aria-labelledby="apoio-title">
+            <div class="ajudar-card__icon" aria-hidden="true"><i class="ph ph-coins"></i></div>
+            <h3 class="ajudar-card__title" id="apoio-title">Doação &amp; Apoio</h3>
+            <p>Sua doação, qualquer que seja o valor, chega direto às famílias e projetos. 100% transparente,
+            com relatórios públicos trimestrais e prestação de contas anual.</p>
+            <ul class="ajudar-card__list" role="list">
+              <li>PIX: 12.345.678/0001-90</li>
+              <li>Depósito identificado (CNPJ)</li>
+              <li>Dedutível no Imposto de Renda</li>
+              <li>Doação de bens e alimentos</li>
+            </ul>
+            <a href="#contato" class="btn btn--primary btn--sm">Quero doar</a>
+          </article>
+
+        </div>
+
+        <!-- CTA — faixa de chamada para acao -->
+        <div class="ajudar__cta reveal">
+          <div class="ajudar__cta-text">
+            <h3>Pronto para fazer a diferença?</h3>
+            <p>Entre em contato e nossa equipe vai te apresentar as melhores formas de contribuir.</p>
+          </div>
+          <div class="ajudar__cta-btns">
+            <a href="#contato" class="btn btn--primary">Falar conosco</a>
+            <a href="https://wa.me/5521999999999?text=Ola!%20Quero%20ajudar%20o%20Instituto%20Raizes%20Vivas"
+               target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp">
+              <i class="ph ph-whatsapp-logo" aria-hidden="true"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- /ajudar -->
+
+
+    <!-- ============================================================
+         SECAO 7 — CONTATO com formulario validado em JS
+    ============================================================ -->
+    <section class="section contato" id="contato" aria-labelledby="contato-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">Fale com a gente</span>
+          <h2 class="section-title" id="contato-heading">Entre em<br/><em>Contato</em></h2>
+        </div>
+
+        <div class="contato__grid">
+
+          <!-- Informacoes de contato -->
+          <address class="contato__info reveal" aria-label="Informacoes de contato">
+
+            <div class="contato__item">
+              <i class="ph ph-map-pin" aria-hidden="true"></i>
+              <div>
+                <strong>Endereço</strong>
+                <p>Rua Bittencourt Sampaio, 420<br/>Comunidade do Sapateiro — Complexo da Maré<br/>Rio de Janeiro — RJ, CEP 21044-000</p>
+              </div>
+            </div>
+
+            <div class="contato__item">
+              <i class="ph ph-phone" aria-hidden="true"></i>
+              <div>
+                <strong>Telefone</strong>
+                <p><a href="tel:+552133334444">(21) 3333-4444</a></p>
+              </div>
+            </div>
+
+            <div class="contato__item">
+              <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+              <div>
+                <strong>WhatsApp</strong>
+                <p><a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer">(21) 99999-9999</a></p>
+              </div>
+            </div>
+
+            <div class="contato__item">
+              <i class="ph ph-envelope" aria-hidden="true"></i>
+              <div>
+                <strong>E-mail</strong>
+                <p><a href="mailto:contato@raizesvivas.org.br">contato@raizesvivas.org.br</a></p>
+              </div>
+            </div>
+
+            <div class="contato__item">
+              <i class="ph ph-clock" aria-hidden="true"></i>
+              <div>
+                <strong>Horário de funcionamento</strong>
+                <p>Segunda a Sexta: 8h às 20h<br/>Sábado: 9h às 14h</p>
+              </div>
+            </div>
+
+            <!-- Redes sociais -->
+            <div class="contato__social" aria-label="Redes sociais">
+              <span class="contato__social-label">Nos siga nas redes:</span>
+              <div class="social-links">
+                <a href="https://instagram.com/raizesvivas" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                  <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+                </a>
+                <a href="https://facebook.com/raizesvivas" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+                  <i class="ph ph-facebook-logo" aria-hidden="true"></i>
+                </a>
+                <a href="https://youtube.com/@raizesvivas" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube">
+                  <i class="ph ph-youtube-logo" aria-hidden="true"></i>
+                </a>
+                <a href="https://linkedin.com/company/raizesvivas" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                  <i class="ph ph-linkedin-logo" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+
+          </address>
+
+          <!-- Formulario de contato com validacao JS -->
+          <div class="contato__form-wrap reveal">
+            <form class="form" id="contact-form" novalidate aria-label="Formulario de contato">
+              <h3 class="form__title">Envie uma mensagem</h3>
+
+              <div class="form__group">
+                <label for="f-name" class="form__label">Nome completo <span aria-hidden="true">*</span></label>
+                <input type="text" id="f-name" name="nome" class="form__input"
+                       placeholder="Seu nome completo" autocomplete="name"
+                       required aria-required="true" />
+                <span class="form__error" id="f-name-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form__row">
+                <div class="form__group">
+                  <label for="f-email" class="form__label">E-mail <span aria-hidden="true">*</span></label>
+                  <input type="email" id="f-email" name="email" class="form__input"
+                         placeholder="seu@email.com" autocomplete="email"
+                         required aria-required="true" />
+                  <span class="form__error" id="f-email-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form__group">
+                  <label for="f-tel" class="form__label">Telefone</label>
+                  <input type="tel" id="f-tel" name="telefone" class="form__input"
+                         placeholder="(21) 00000-0000" autocomplete="tel" />
+                </div>
+              </div>
+
+              <div class="form__group">
+                <label for="f-assunto" class="form__label">Assunto <span aria-hidden="true">*</span></label>
+                <select id="f-assunto" name="assunto" class="form__input form__select"
+                        required aria-required="true">
+                  <option value="">Selecione um assunto</option>
+                  <option value="voluntariado">Voluntariado</option>
+                  <option value="parceria">Parceria institucional</option>
+                  <option value="doacao">Doação</option>
+                  <option value="imprensa">Imprensa / mídia</option>
+                  <option value="outro">Outro assunto</option>
+                </select>
+                <span class="form__error" id="f-assunto-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form__group">
+                <label for="f-msg" class="form__label">Mensagem <span aria-hidden="true">*</span></label>
+                <textarea id="f-msg" name="mensagem" class="form__input form__textarea"
+                          placeholder="Escreva sua mensagem aqui..." rows="5"
+                          required aria-required="true"></textarea>
+                <span class="form__error" id="f-msg-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form__group form__check">
+                <input type="checkbox" id="f-lgpd" name="lgpd" required aria-required="true" />
+                <label for="f-lgpd">Concordo com o uso dos meus dados para fins de contato, conforme a <strong>LGPD</strong>.</label>
+                <span class="form__error" id="f-lgpd-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--full" id="form-submit">
+                <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+                Enviar mensagem
+              </button>
+
+              <!-- Feedback dinamico de envio -->
+              <div class="form__feedback" id="form-feedback" aria-live="assertive" hidden></div>
+
+            </form>
+          </div>
+
+        </div><!-- /contato__grid -->
+
+      </div>
+    </section><!-- /contato -->
+
+  </main><!-- /main -->
+
+
+  <!-- ============================================================
+       FOOTER — rodape com identidade, navegacao e contato rapido
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- Identidade -->
+        <div class="footer__brand">
+          <a href="#home" class="footer__logo" aria-label="Inicio">
+            <span class="logo-icon" aria-hidden="true">🌱</span>
+            <span class="logo-text">Raízes <strong>Vivas</strong></span>
+          </a>
+          <p>Transformando vidas através do esporte, educação e cultura na Comunidade do Sapateiro desde 2010.</p>
+          <p class="footer__cnpj">CNPJ: 12.345.678/0001-90</p>
+          <div class="social-links">
+            <a href="https://instagram.com/raizesvivas" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
+            <a href="https://facebook.com/raizesvivas"  target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook"><i class="ph ph-facebook-logo"  aria-hidden="true"></i></a>
+            <a href="https://youtube.com/@raizesvivas"  target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube"><i class="ph ph-youtube-logo"   aria-hidden="true"></i></a>
+            <a href="https://linkedin.com/company/raizesvivas" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><i class="ph ph-linkedin-logo" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <!-- Navegacao rapida -->
+        <nav class="footer__nav" aria-label="Navegacao do rodape">
+          <h4 class="footer__nav-title">Navegação</h4>
+          <ul role="list">
+            <li><a href="#sobre">Sobre nós</a></li>
+            <li><a href="#missao">Missão e Valores</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#ajudar">Como Ajudar</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+
+        <!-- Projetos -->
+        <nav class="footer__nav" aria-label="Projetos no rodape">
+          <h4 class="footer__nav-title">Projetos</h4>
+          <ul role="list">
+            <li><a href="#projetos">🏐 Vôlei que Voa</a></li>
+            <li><a href="#projetos">🤝 Rede Solidária Maré</a></li>
+            <li><a href="#projetos">📚 Aprender para Crescer</a></li>
+            <li><a href="#projetos">🎉 Festa da Comunidade</a></li>
+          </ul>
+        </nav>
+
+        <!-- Contato rapido -->
+        <address class="footer__contact" aria-label="Contato rapido">
+          <h4 class="footer__nav-title">Contato rápido</h4>
+          <ul role="list">
+            <li><i class="ph ph-map-pin"       aria-hidden="true"></i> Complexo da Maré, RJ</li>
+            <li><i class="ph ph-phone"         aria-hidden="true"></i> <a href="tel:+552133334444">(21) 3333-4444</a></li>
+            <li><i class="ph ph-whatsapp-logo" aria-hidden="true"></i> <a href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer">(21) 99999-9999</a></li>
+            <li><i class="ph ph-envelope"      aria-hidden="true"></i> <a href="mailto:contato@raizesvivas.org.br">contato@raizesvivas.org.br</a></li>
+          </ul>
+        </address>
+
+      </div><!-- /footer__grid -->
+
+      <!-- Barra inferior do footer -->
+      <div class="footer__bottom">
+        <p>&copy; <span id="footer-year"></span> Instituto Raízes Vivas. Todos os direitos reservados.</p>
+        <p>Desenvolvido com <i class="ph ph-heart-straight" aria-hidden="true"></i> pela comunidade, para a comunidade.</p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       ELEMENTOS FLUTUANTES
+  ============================================================ -->
+
+  <!-- Botao flutuante do WhatsApp -->
+  <a href="https://wa.me/5521999999999?text=Ola!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Instituto%20Raizes%20Vivas"
+     class="fab-whatsapp"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Fale conosco pelo WhatsApp">
+    <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+    <span class="fab-whatsapp__tooltip">Fale conosco!</span>
+  </a>
+
+  <!-- Botao voltar ao topo -->
+  <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo da pagina" title="Voltar ao topo">
+    <i class="ph ph-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
