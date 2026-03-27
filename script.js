@@ -1,660 +1,567 @@
 /**
  * ================================================================
  * INSTITUTO RAÍZES VIVAS — script.js
- * Funcionalidades: Navbar, Dark Mode, Carrossel Hero, Abas de
- * Projetos, Galeria com Modal Lightbox, Filtros, Scroll Reveal,
- * Contador Animado, Validação de Formulário, Botão Voltar ao Topo.
+ * Módulos: Navbar · Menu Mobile · Dark Mode · Carrossel Hero ·
+ *          Abas de Projetos · Galeria + Lightbox · Scroll Reveal ·
+ *          Contador Animado · Formulário · Voltar ao Topo · Footer
  * ================================================================
  */
 
 /* ----------------------------------------------------------------
-   UTILITÁRIOS INTERNOS
+   Helpers
 ---------------------------------------------------------------- */
-
-/**
- * Seleciona um único elemento.
- * @param {string} sel — Seletor CSS
- * @param {Element} [ctx=document] — Contexto de busca
- */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
-
-/**
- * Seleciona múltiplos elementos como Array.
- * @param {string} sel — Seletor CSS
- * @param {Element} [ctx=document] — Contexto de busca
- */
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
 /* ================================================================
-   1. NAVBAR — scroll + active link
+   1. NAVBAR — sombra ao rolar + link ativo
 ================================================================ */
-(function initNavbar() {
-  const navbar  = $('#navbar');
-  const navLinks = $$('.nav-link');
+function initNavbar() {
+  const navbar   = $('#navbar');
+  const navLinks = $$('.nav-links .nav-link');
   const sections = $$('section[id]');
 
-  // Adiciona sombra ao fazer scroll
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('is-scrolled', window.scrollY > 10);
-    highlightActiveLink();
+    // Adiciona sombra quando não está no topo
+    navbar.classList.toggle('scrolled', window.scrollY > 8);
+
+    // Marca o link ativo conforme a seção visível
+    const scrollY = window.scrollY + 90;
+    let current = '';
+    sections.forEach(s => { if (s.offsetTop <= scrollY) current = s.id; });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
   }, { passive: true });
-
-  // Marca o link ativo conforme a seção visível
-  function highlightActiveLink() {
-    const scrollY = window.scrollY + 100; // offset do navbar
-
-    let currentId = '';
-    sections.forEach(sec => {
-      if (sec.offsetTop <= scrollY) currentId = sec.id;
-    });
-
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href').replace('#', '');
-      link.classList.toggle('is-active', href === currentId);
-    });
-  }
-
-  // Fecha o menu mobile ao clicar num link
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      closeMobileMenu();
-    });
-  });
-})();
-
-/* ================================================================
-   2. MENU HAMBÚRGUER (Mobile)
-================================================================ */
-(function initHamburger() {
-  const btn      = $('#hamburger');
-  const nav      = $('#main-nav');
-  const overlay  = $('#nav-overlay');
-
-  if (!btn || !nav) return;
-
-  btn.addEventListener('click', toggleMenu);
-  overlay.addEventListener('click', closeMobileMenu);
-
-  // Fecha com tecla Escape
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeMobileMenu();
-  });
-
-  function toggleMenu() {
-    const isOpen = nav.classList.toggle('is-open');
-    btn.classList.toggle('is-open', isOpen);
-    overlay.classList.toggle('is-open', isOpen);
-    btn.setAttribute('aria-expanded', String(isOpen));
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  }
-})();
-
-/** Fecha o menu mobile — chamado por outros módulos */
-function closeMobileMenu() {
-  const btn     = $('#hamburger');
-  const nav     = $('#main-nav');
-  const overlay = $('#nav-overlay');
-
-  nav?.classList.remove('is-open');
-  btn?.classList.remove('is-open');
-  overlay?.classList.remove('is-open');
-  btn?.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
 }
 
 /* ================================================================
-   3. DARK MODE — persiste preferência no localStorage
+   2. MENU MOBILE — drawer lateral
 ================================================================ */
-(function initDarkMode() {
-  const toggleBtn = $('#theme-toggle');
-  const html = document.documentElement;
+function initMobileMenu() {
+  const hamburger = $('#hamburger');
+  const menu      = $('#mobile-menu');
+  const overlay   = $('#mobile-overlay');
+  const closeBtn  = $('#mobile-close');
+  const menuLinks = $$('.mobile-menu__link', menu);
 
-  // Carrega tema salvo ou prefere-color-scheme do sistema
-  const saved = localStorage.getItem('raizes-theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initial = saved ?? (prefersDark ? 'dark' : 'light');
-  html.dataset.theme = initial;
+  if (!hamburger || !menu) return;
 
-  toggleBtn?.addEventListener('click', () => {
-    const isDark = html.dataset.theme === 'dark';
-    const next   = isDark ? 'light' : 'dark';
-    html.dataset.theme = next;
-    localStorage.setItem('raizes-theme', next);
+  function openMenu() {
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('show');
+    hamburger.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    // Foco no botão de fechar para acessibilidade
+    closeBtn.focus();
+  }
+
+  function closeMenu() {
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    overlay.classList.remove('show');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    hamburger.focus();
+  }
+
+  hamburger.addEventListener('click', () => {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
   });
-})();
+
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+
+  // Fechar ao clicar em qualquer link do menu
+  menuLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Fechar com tecla Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+  });
+}
 
 /* ================================================================
-   4. CARROSSEL HERO — autoplay + controles
+   3. DARK MODE — persiste no localStorage
 ================================================================ */
-(function initHeroCarousel() {
-  const slides    = $$('.hero__slide');
-  const dots      = $$('.dot', $('#carousel-dots'));
-  const prevBtn   = $('#prev-slide');
-  const nextBtn   = $('#next-slide');
+function initDarkMode() {
+  const btn  = $('#theme-toggle');
+  const html = document.documentElement;
+
+  // Carrega tema salvo ou detecta preferência do sistema
+  const saved   = localStorage.getItem('rv-theme');
+  const sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  html.dataset.theme = saved ?? (sysDark ? 'dark' : 'light');
+
+  btn?.addEventListener('click', () => {
+    const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    html.dataset.theme = next;
+    localStorage.setItem('rv-theme', next);
+  });
+}
+
+/* ================================================================
+   4. CARROSSEL HERO
+================================================================ */
+function initHeroCarousel() {
+  const slides   = $$('.hero-slide');
+  const dots     = $$('.hero-dot');
+  const prevBtn  = $('#hero-prev');
+  const nextBtn  = $('#hero-next');
+  const counter  = $('#slide-current');
+  const progBar  = $('#hero-progress-bar');
+  const track    = $('#hero-track');
 
   if (!slides.length) return;
 
-  let current   = 0;
-  let autoTimer = null;
-  const INTERVAL = 6000; // 6s entre slides
+  const TOTAL     = slides.length;
+  const INTERVAL  = 6000; // ms
+  let   current   = 0;
+  let   timer     = null;
+  let   progTimer = null;
 
-  /** Ativa o slide pelo índice */
+  /* Formata número com zero à esquerda */
+  const fmt = n => String(n + 1).padStart(2, '0');
+
+  /* Vai para o slide de índice idx */
   function goTo(idx) {
     // Desativa o slide atual
-    slides[current].classList.remove('is-active');
-    slides[current].setAttribute('aria-hidden', 'true');
-    dots[current].classList.remove('is-active');
+    slides[current].classList.remove('active');
+    slides[current].classList.add('prev');
+    dots[current].classList.remove('active');
     dots[current].setAttribute('aria-selected', 'false');
 
-    // Normaliza o índice (circular)
-    current = (idx + slides.length) % slides.length;
+    // Remove 'prev' após a transição acabar
+    const old = current;
+    setTimeout(() => slides[old].classList.remove('prev'), 850);
 
-    // Ativa o novo slide
-    slides[current].classList.add('is-active');
-    slides[current].setAttribute('aria-hidden', 'false');
-    dots[current].classList.add('is-active');
+    // Normaliza índice
+    current = (idx + TOTAL) % TOTAL;
+
+    // Ativa novo slide
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
     dots[current].setAttribute('aria-selected', 'true');
+
+    // Atualiza contador
+    if (counter) counter.textContent = fmt(current);
+
+    // Reinicia barra de progresso
+    startProgress();
   }
 
-  /** Avança para o próximo slide */
-  function next() { goTo(current + 1); }
+  /* Próximo / anterior */
+  const next = () => goTo(current + 1);
+  const prev = () => goTo(current - 1);
 
-  /** Retrocede para o slide anterior */
-  function prev() { goTo(current - 1); }
-
-  /** Inicia o autoplay */
-  function startAuto() {
-    stopAuto();
-    autoTimer = setInterval(next, INTERVAL);
+  /* Autoplay */
+  function startAutoplay() {
+    stopAutoplay();
+    timer = setInterval(next, INTERVAL);
   }
 
-  /** Para o autoplay */
-  function stopAuto() {
-    clearInterval(autoTimer);
+  function stopAutoplay() {
+    clearInterval(timer);
   }
 
-  // Eventos dos botões
-  nextBtn?.addEventListener('click', () => { next(); startAuto(); });
-  prevBtn?.addEventListener('click', () => { prev(); startAuto(); });
+  /* Barra de progresso CSS (largura de 0% → 100% em INTERVAL ms) */
+  function startProgress() {
+    if (!progBar) return;
+    clearTimeout(progTimer);
+    progBar.style.transition = 'none';
+    progBar.style.width = '0%';
+    // Força reflow para reiniciar a transição
+    void progBar.offsetWidth;
+    progBar.style.transition = `width ${INTERVAL}ms linear`;
+    progBar.style.width = '100%';
+  }
 
-  // Eventos dos dots
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => { goTo(i); startAuto(); });
+  /* Eventos */
+  nextBtn?.addEventListener('click', () => { next(); startAutoplay(); });
+  prevBtn?.addEventListener('click', () => { prev(); startAutoplay(); });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goTo(+dot.dataset.slide);
+      startAutoplay();
+    });
   });
 
-  // Pausa o autoplay ao interagir com o carrossel (UX)
-  const carousel = $('#hero-carousel');
-  carousel?.addEventListener('mouseenter', stopAuto);
-  carousel?.addEventListener('mouseleave', startAuto);
+  /* Pausa no hover */
+  track?.addEventListener('mouseenter', stopAutoplay);
+  track?.addEventListener('mouseleave', startAutoplay);
 
-  // Suporte a swipe (touch) no hero
-  let touchStartX = 0;
-  carousel?.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  carousel?.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].screenX - touchStartX;
-    if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); startAuto(); }
+  /* Swipe em touch */
+  let tx = 0;
+  track?.addEventListener('touchstart', e => { tx = e.changedTouches[0].screenX; }, { passive: true });
+  track?.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].screenX - tx;
+    if (Math.abs(dx) > 48) { dx < 0 ? next() : prev(); startAutoplay(); }
+  });
+
+  /* Teclado (setas) no hero */
+  document.addEventListener('keydown', e => {
+    if ($('#lightbox:not([hidden])')) return; // não interfere com lightbox aberto
+    if (e.key === 'ArrowRight') { next(); startAutoplay(); }
+    if (e.key === 'ArrowLeft')  { prev(); startAutoplay(); }
   });
 
   // Inicia
-  startAuto();
-})();
+  startAutoplay();
+  startProgress();
+}
 
 /* ================================================================
    5. ABAS DE PROJETOS
 ================================================================ */
-(function initProjectTabs() {
-  const tabs   = $$('.proj-tab');
-  const panels = $$('.proj-panel');
+function initProjectTabs() {
+  const tabs   = $$('.tab');
+  const panels = $$('.panel');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      const target = tab.dataset.tab;
+      const target = tab.dataset.panel;
 
-      // Remove estado ativo de todas as abas
-      tabs.forEach(t => {
-        t.classList.remove('is-active');
-        t.setAttribute('aria-selected', 'false');
-      });
+      // Reset
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
 
-      // Oculta todos os painéis
-      panels.forEach(p => {
-        p.classList.remove('is-active');
-        p.hidden = true;
-      });
-
-      // Ativa a aba clicada
-      tab.classList.add('is-active');
+      // Ativa
+      tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
 
-      // Mostra o painel correspondente
-      const panel = $(`#tab-${target}`);
+      const panel = $(`#panel-${target}`);
       if (panel) {
-        panel.classList.add('is-active');
+        panel.classList.add('active');
         panel.hidden = false;
 
-        // Re-dispara animações de reveal dentro do painel
+        // Re-anima reveals dentro do painel
         $$('.reveal', panel).forEach(el => {
-          el.classList.remove('is-visible');
-          void el.offsetWidth; // force reflow
-          el.classList.add('is-visible');
+          el.classList.remove('visible');
+          void el.offsetWidth;
+          el.classList.add('visible');
         });
       }
     });
   });
-})();
+}
 
 /* ================================================================
-   6. GALERIA — Filtros + Modal Lightbox + Navegação
+   6. GALERIA — filtros + lightbox
 ================================================================ */
-(function initGaleria() {
-  /* ---- Filtros ---- */
-  const filterBtns = $$('.filter-btn');
-  const items      = $$('.galeria__item');
+function initGallery() {
 
-  filterBtns.forEach(btn => {
+  /* — FILTROS — */
+  const filters = $$('.gallery-filter');
+  const items   = $$('.gitem');
+
+  filters.forEach(btn => {
     btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
+      filters.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-      filterBtns.forEach(b => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-
+      const f = btn.dataset.filter;
       items.forEach(item => {
-        const match = filter === 'all' || item.dataset.category === filter;
-        item.classList.toggle('is-hidden', !match);
+        item.classList.toggle('hidden', f !== 'all' && item.dataset.cat !== f);
       });
     });
   });
 
-  /* ---- Modal Lightbox ---- */
-  const modal      = $('#galeria-modal');
-  const overlay    = $('#modal-overlay');
-  const closeBtn   = $('#modal-close');
-  const imgWrap    = $('#modal-img-wrap');
-  const caption    = $('#modal-caption');
-  const prevBtn    = $('#modal-prev');
-  const nextBtn    = $('#modal-next');
+  /* — LIGHTBOX — */
+  const lb      = $('#lightbox');
+  const lbOver  = $('#lb-overlay');
+  const lbClose = $('#lb-close');
+  const lbPrev  = $('#lb-prev');
+  const lbNext  = $('#lb-next');
+  const lbImg   = $('#lb-img');
+  const lbCap   = $('#lb-caption');
 
-  if (!modal) return;
+  if (!lb) return;
 
-  let currentIdx = 0;           // índice do item atual no modal
-  let visibleItems = [];        // items visíveis (respeitando filtro ativo)
+  let idx      = 0;
+  let visible  = [];
 
-  /** Abre o modal com o item de índice idx */
-  function openModal(idx) {
-    visibleItems = items.filter(i => !i.classList.contains('is-hidden'));
-    currentIdx = idx;
-    renderModal();
-
-    modal.hidden    = false;
-    overlay.hidden  = false;
+  function openLb(i) {
+    visible = items.filter(it => !it.classList.contains('hidden'));
+    idx     = i;
+    renderLb();
+    lb.hidden = false;
     document.body.style.overflow = 'hidden';
-    closeBtn.focus();
+    lbClose.focus();
   }
 
-  /** Fecha o modal */
-  function closeModal() {
-    modal.hidden   = true;
-    overlay.hidden = true;
+  function closeLb() {
+    lb.hidden = true;
     document.body.style.overflow = '';
   }
 
-  /** Renderiza o conteúdo do modal conforme currentIdx */
-  function renderModal() {
-    const item  = visibleItems[currentIdx];
+  function navLb(dir) {
+    idx = (idx + dir + visible.length) % visible.length;
+    renderLb();
+  }
+
+  function renderLb() {
+    const item  = visible[idx];
     if (!item) return;
-
-    const thumb = $('.galeria__thumb', item);
-    const bg    = window.getComputedStyle(thumb).backgroundImage;
-    const cap   = item.dataset.caption || '';
-
-    imgWrap.style.backgroundImage = bg;
-    caption.textContent = cap;
-    caption.id = 'modal-caption';
-
-    // Oculta setas se só há um item
-    const hasMultiple = visibleItems.length > 1;
-    prevBtn.hidden = !hasMultiple;
-    nextBtn.hidden = !hasMultiple;
+    const thumb = $('.gthumb', item);
+    lbImg.style.backgroundImage = window.getComputedStyle(thumb).backgroundImage;
+    lbCap.textContent = item.dataset.caption || '';
+    lbPrev.hidden = lbNext.hidden = visible.length < 2;
   }
 
-  /** Navega para o próximo/anterior */
-  function navModal(dir) {
-    currentIdx = (currentIdx + dir + visibleItems.length) % visibleItems.length;
-    renderModal();
-  }
+  // Abre ao clicar em cada item
+  items.forEach((item, i) => item.addEventListener('click', () => openLb(i)));
 
-  // Abre modal ao clicar em cada item
-  items.forEach((item, idx) => {
-    item.addEventListener('click', () => openModal(idx));
-  });
+  lbClose?.addEventListener('click',   closeLb);
+  lbOver?.addEventListener('click',    closeLb);
+  lbPrev?.addEventListener('click',    () => navLb(-1));
+  lbNext?.addEventListener('click',    () => navLb(1));
 
-  // Botões de fechar e navegar
-  closeBtn?.addEventListener('click', closeModal);
-  overlay?.addEventListener('click', closeModal);
-  prevBtn?.addEventListener('click', () => navModal(-1));
-  nextBtn?.addEventListener('click', () => navModal(1));
-
-  // Teclado: ESC fecha, setas navegam
   document.addEventListener('keydown', e => {
-    if (modal.hidden) return;
-    if (e.key === 'Escape')     closeModal();
-    if (e.key === 'ArrowLeft')  navModal(-1);
-    if (e.key === 'ArrowRight') navModal(1);
+    if (lb.hidden) return;
+    if (e.key === 'Escape')     closeLb();
+    if (e.key === 'ArrowLeft')  navLb(-1);
+    if (e.key === 'ArrowRight') navLb(1);
   });
 
-  // Swipe no modal
-  let touchX = 0;
-  modal.addEventListener('touchstart', e => { touchX = e.changedTouches[0].screenX; }, { passive: true });
-  modal.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].screenX - touchX;
-    if (Math.abs(dx) > 50) navModal(dx < 0 ? 1 : -1);
+  // Swipe no lightbox
+  let ltx = 0;
+  lb.addEventListener('touchstart', e => { ltx = e.changedTouches[0].screenX; }, { passive: true });
+  lb.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].screenX - ltx;
+    if (Math.abs(dx) > 48) navLb(dx < 0 ? 1 : -1);
   });
-})();
+}
 
 /* ================================================================
-   7. SCROLL REVEAL — IntersectionObserver para animações suaves
+   7. SCROLL REVEAL (IntersectionObserver)
 ================================================================ */
-(function initScrollReveal() {
-  const elements = $$('.reveal');
+function initScrollReveal() {
+  const els = $$('.reveal');
+  if (!els.length) return;
 
-  if (!elements.length) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target); // anima apenas uma vez
-        }
-      });
-    },
-    {
-      threshold:  0.12,   // visível 12% do elemento
-      rootMargin: '0px 0px -40px 0px'  // pequena margem inferior
-    }
-  );
-
-  elements.forEach(el => observer.observe(el));
-})();
+  els.forEach(el => obs.observe(el));
+}
 
 /* ================================================================
-   8. CONTADOR ANIMADO para estatísticas
+   8. CONTADOR ANIMADO (easeOutExpo)
 ================================================================ */
-(function initCounters() {
-  const counters = $$('.stat__num[data-target]');
-
+function initCounters() {
+  const counters = $$('.stat-num[data-target]');
   if (!counters.length) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        observer.unobserve(entry.target);
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      obs.unobserve(entry.target);
 
-        const el     = entry.target;
-        const target = +el.dataset.target;
-        const dur    = 1800; // duração da animação em ms
-        const start  = performance.now();
+      const el     = entry.target;
+      const target = +el.dataset.target;
+      const dur    = 1600;
+      const t0     = performance.now();
 
-        // Easing — easeOutExpo para desaceleração suave no final
-        function easeOutExpo(t) {
-          return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-        }
+      const easeOut = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 
-        function tick(now) {
-          const elapsed  = now - start;
-          const progress = Math.min(elapsed / dur, 1);
-          const value    = Math.round(easeOutExpo(progress) * target);
-          el.textContent = value.toLocaleString('pt-BR');
-          if (progress < 1) requestAnimationFrame(tick);
-        }
-
-        requestAnimationFrame(tick);
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  counters.forEach(el => observer.observe(el));
-})();
-
-/* ================================================================
-   9. VALIDAÇÃO DO FORMULÁRIO DE CONTATO
-================================================================ */
-(function initContactForm() {
-  const form     = $('#contact-form');
-  const feedback = $('#form-feedback');
-  const submitBtn = $('#form-submit');
-
-  if (!form) return;
-
-  /* --- Regras de validação --- */
-  const rules = {
-    'f-name': {
-      required: true,
-      minLength: 3,
-      messages: {
-        required:  'Por favor, informe seu nome completo.',
-        minLength: 'O nome deve ter ao menos 3 caracteres.'
-      }
-    },
-    'f-email': {
-      required: true,
-      pattern:  /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-      messages: {
-        required: 'Por favor, informe seu e-mail.',
-        pattern:  'Informe um e-mail válido (ex: nome@dominio.com.br).'
-      }
-    },
-    'f-assunto': {
-      required: true,
-      messages: { required: 'Por favor, selecione um assunto.' }
-    },
-    'f-msg': {
-      required:  true,
-      minLength: 10,
-      messages: {
-        required:  'Por favor, escreva uma mensagem.',
-        minLength: 'A mensagem deve ter ao menos 10 caracteres.'
-      }
-    }
-  };
-
-  /**
-   * Valida um campo e exibe/limpa o erro.
-   * @param {HTMLElement} field — O campo a validar
-   * @returns {boolean} — true se válido
-   */
-  function validateField(field) {
-    const id     = field.id;
-    const rule   = rules[id];
-    const errEl  = $(`#${id}-error`);
-
-    if (!rule || !errEl) return true;
-
-    const val    = field.value.trim();
-    let   msg    = '';
-
-    if (rule.required && !val) {
-      msg = rule.messages.required;
-    } else if (rule.pattern && val && !rule.pattern.test(val)) {
-      msg = rule.messages.pattern;
-    } else if (rule.minLength && val.length < rule.minLength) {
-      msg = rule.messages.minLength;
-    }
-
-    errEl.textContent = msg;
-    field.classList.toggle('is-error', !!msg);
-    field.setAttribute('aria-invalid', String(!!msg));
-
-    return !msg;
-  }
-
-  /** Valida o checkbox LGPD separadamente */
-  function validateCheckbox() {
-    const cb    = $('#f-lgpd');
-    const errEl = $('#f-lgpd-error');
-    if (!cb || !errEl) return true;
-
-    const valid = cb.checked;
-    errEl.textContent = valid ? '' : 'Você precisa aceitar os termos para enviar a mensagem.';
-    return valid;
-  }
-
-  // Valida em tempo real ao sair do campo (blur)
-  Object.keys(rules).forEach(id => {
-    const field = $(`#${id}`);
-    field?.addEventListener('blur', () => validateField(field));
-    field?.addEventListener('input', () => {
-      // Limpa o erro enquanto o usuário digita (após blur inicial)
-      if (field.classList.contains('is-error')) validateField(field);
+      (function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        el.textContent = Math.round(easeOut(p) * target).toLocaleString('pt-BR');
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
     });
-  });
+  }, { threshold: 0.5 });
 
-  // Submit — valida tudo e "envia" (simulado)
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // Valida todos os campos
-    const fieldIds    = Object.keys(rules);
-    let   allValid    = fieldIds.every(id => validateField($(`#${id}`))); 
-    const checkOk     = validateCheckbox();
-    allValid          = allValid && checkOk;
-
-    if (!allValid) {
-      // Scroll suave até o primeiro erro
-      const firstError = form.querySelector('.is-error, [aria-invalid="true"]');
-      firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      firstError?.focus();
-      return;
-    }
-
-    // --- Simulação de envio --- (substituir por fetch real em produção)
-    submitBtn.disabled    = true;
-    submitBtn.textContent = 'Enviando…';
-
-    try {
-      // Simula delay de rede
-      await new Promise(res => setTimeout(res, 1800));
-
-      // Coleta dados do formulário (para fins demonstrativos)
-      const data = Object.fromEntries(new FormData(form).entries());
-      console.log('📬 Formulário enviado:', data);
-
-      // Feedback de sucesso
-      form.reset();
-      showFeedback('success',
-        '✅ Mensagem enviada com sucesso! Nossa equipe entrará em contato em até 2 dias úteis.');
-
-    } catch (err) {
-      showFeedback('error',
-        '❌ Erro ao enviar. Por favor, tente novamente ou entre em contato pelo WhatsApp.');
-    } finally {
-      submitBtn.disabled    = false;
-      submitBtn.innerHTML   = '<i class="ph ph-paper-plane-tilt" aria-hidden="true"></i> Enviar mensagem';
-    }
-  });
-
-  /**
-   * Exibe o feedback de envio.
-   * @param {'success'|'error'} type
-   * @param {string} message
-   */
-  function showFeedback(type, message) {
-    feedback.textContent  = message;
-    feedback.className    = `form__feedback is-${type}`;
-    feedback.hidden       = false;
-    feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    // Auto-oculta após 8s no caso de sucesso
-    if (type === 'success') setTimeout(() => { feedback.hidden = true; }, 8000);
-  }
-})();
+  counters.forEach(el => obs.observe(el));
+}
 
 /* ================================================================
-   10. BOTÃO VOLTAR AO TOPO
+   9. MÁSCARA DE TELEFONE
 ================================================================ */
-(function initBackToTop() {
-  const btn = $('#back-to-top');
-  if (!btn) return;
+function initPhoneMask() {
+  const tel = $('#f-tel');
+  if (!tel) return;
 
-  // Mostra o botão após rolar 400px
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('is-visible', window.scrollY > 400);
-  }, { passive: true });
-
-  btn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-
-/* ================================================================
-   11. ANO DINÂMICO NO FOOTER
-================================================================ */
-(function initFooterYear() {
-  const yearEl = $('#footer-year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-})();
-
-/* ================================================================
-   12. MÁSCARA DE TELEFONE (campo de contato)
-================================================================ */
-(function initPhoneMask() {
-  const telInput = $('#f-tel');
-  if (!telInput) return;
-
-  telInput.addEventListener('input', function () {
+  tel.addEventListener('input', function () {
     let v = this.value.replace(/\D/g, '').slice(0, 11);
-
-    if (v.length <= 2)       this.value = v.replace(/(\d{0,2})/, '($1');
+    if      (v.length <= 2)  this.value = v.replace(/(\d{0,2})/, '($1');
     else if (v.length <= 6)  this.value = v.replace(/(\d{2})(\d{0,4})/, '($1) $2');
     else if (v.length <= 10) this.value = v.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
     else                     this.value = v.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
   });
-})();
+}
 
 /* ================================================================
-   13. SMOOTH SCROLL para links âncora com offset do navbar
+   10. VALIDAÇÃO DO FORMULÁRIO
 ================================================================ */
-(function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
+function initContactForm() {
+  const form     = $('#contact-form');
+  const feedback = $('#form-feedback');
+  const submitBtn = $('#form-submit');
+  if (!form) return;
+
+  /* Regras de validação */
+  const rules = {
+    'f-name':    { required: true, min: 3,  msgs: { required: 'Informe seu nome completo.', min: 'Mínimo de 3 caracteres.' } },
+    'f-email':   { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, msgs: { required: 'Informe seu e-mail.', pattern: 'E-mail inválido.' } },
+    'f-assunto': { required: true, msgs: { required: 'Selecione um assunto.' } },
+    'f-msg':     { required: true, min: 10, msgs: { required: 'Escreva uma mensagem.', min: 'Mínimo de 10 caracteres.' } }
+  };
+
+  function validate(field) {
+    const id   = field.id;
+    const rule = rules[id];
+    const errEl = $(`#err-${id.replace('f-', '')}`);
+    if (!rule || !errEl) return true;
+
+    const val = field.value.trim();
+    let msg = '';
+
+    if (rule.required && !val)                    msg = rule.msgs.required;
+    else if (rule.pattern && !rule.pattern.test(val)) msg = rule.msgs.pattern;
+    else if (rule.min && val.length < rule.min)   msg = rule.msgs.min;
+
+    errEl.textContent = msg;
+    field.classList.toggle('error', !!msg);
+    return !msg;
+  }
+
+  function validateLgpd() {
+    const cb  = $('#f-lgpd');
+    const err = $('#err-lgpd');
+    if (!cb || !err) return true;
+    const ok = cb.checked;
+    err.textContent = ok ? '' : 'Aceite os termos para continuar.';
+    return ok;
+  }
+
+  // Validação em tempo real
+  Object.keys(rules).forEach(id => {
+    const f = $(`#${id}`);
+    f?.addEventListener('blur', () => validate(f));
+    f?.addEventListener('input', () => { if (f.classList.contains('error')) validate(f); });
+  });
+
+  // Envio
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const allOk = Object.keys(rules).every(id => validate($(`#${id}`))) && validateLgpd();
+    if (!allOk) {
+      form.querySelector('.error, [aria-invalid="true"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+
+    try {
+      // Simula envio (substituir por fetch real em produção)
+      await new Promise(r => setTimeout(r, 1800));
+      const data = Object.fromEntries(new FormData(form));
+      console.log('📬 Formulário enviado:', data);
+
+      form.reset();
+      showFeedback('success', '✅ Mensagem enviada! Retornaremos em até 2 dias úteis.');
+    } catch {
+      showFeedback('error', '❌ Erro ao enviar. Tente novamente ou use o WhatsApp.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="ph ph-paper-plane-tilt"></i> Enviar mensagem';
+    }
+  });
+
+  function showFeedback(type, msg) {
+    feedback.textContent = msg;
+    feedback.className = `form-feedback ${type}`;
+    feedback.hidden = false;
+    feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (type === 'success') setTimeout(() => { feedback.hidden = true; }, 8000);
+  }
+}
+
+/* ================================================================
+   11. SMOOTH SCROLL com offset do navbar
+================================================================ */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
       if (!target) return;
-
       e.preventDefault();
-      const navH   = parseInt(getComputedStyle(document.documentElement)
-                       .getPropertyValue('--navbar-h'), 10) || 70;
-      const top    = target.getBoundingClientRect().top + window.scrollY - navH;
-
-      window.scrollTo({ top, behavior: 'smooth' });
+      const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
+      window.scrollTo({ top: target.offsetTop - navH, behavior: 'smooth' });
     });
   });
-})();
+}
 
 /* ================================================================
-   14. REVELAÇÃO INICIAL — elements ja visiveis no viewport ao carregar
+   12. BOTÃO VOLTAR AO TOPO
 ================================================================ */
-window.addEventListener('DOMContentLoaded', () => {
-  // Pequeno delay para garantir que o CSS de .reveal foi aplicado
+function initBackToTop() {
+  const btn = $('#back-top');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 380);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ================================================================
+   13. ANO NO FOOTER
+================================================================ */
+function initFooterYear() {
+  const el = $('#footer-year');
+  if (el) el.textContent = new Date().getFullYear();
+}
+
+/* ================================================================
+   14. REVEALS INICIAIS — elementos já visíveis no carregamento
+================================================================ */
+function revealOnLoad() {
   requestAnimationFrame(() => {
     $$('.reveal').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.9) {
-        el.classList.add('is-visible');
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        el.classList.add('visible');
       }
     });
   });
-});
+}
 
 /* ================================================================
-   15. LOG de inicialização (desenvolvimento)
+   INICIALIZAÇÃO — aguarda o DOM estar pronto
 ================================================================ */
-console.log(
-  '%c🌱 Instituto Raízes Vivas\n' +
-  '%cSite carregado com sucesso. ' +
-  'Transformando vidas desde 2010.',
-  'font-size:1.2em; font-weight:bold; color:#2d7a56;',
-  'color:#6b6259;'
-);
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initMobileMenu();
+  initDarkMode();
+  initHeroCarousel();
+  initProjectTabs();
+  initGallery();
+  initScrollReveal();
+  initCounters();
+  initPhoneMask();
+  initContactForm();
+  initSmoothScroll();
+  initBackToTop();
+  initFooterYear();
+  revealOnLoad();
+
+  console.log(
+    '%c🌱 Raízes Vivas %csistema iniciado',
+    'font-weight:bold;color:#22643f;',
+    'color:#4a4540;'
+  );
+});
