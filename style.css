@@ -1962,9 +1962,10 @@ select {
     margin-bottom: .65rem;
 }
 
+/* Logo no footer */
 .footer-logo {
-    color: #fff;
-    margin-bottom: 1.25rem;
+  display: inline-block;
+  margin-bottom: 1.25rem;
 }
 
 .footer-logo:hover {
