@@ -308,9 +308,6 @@ select {
 /* ----------------------------------------------------------------
    5. NAVBAR
 ---------------------------------------------------------------- */
-/* =====================================================
-   NAVBAR
-===================================================== */
 .navbar {
     position: fixed;
     top: 0;
@@ -340,9 +337,7 @@ select {
     gap: 1rem;
 }
 
-/* =====================================================
-   LOGO (AGORA COM IMAGEM 🔥)
-===================================================== */
+/* Logo */
 .nav-logo {
     display: flex;
     align-items: center;
@@ -350,7 +345,6 @@ select {
     text-decoration: none;
 }
 
-/* imagem da logo */
 .nav-logo__img {
     height: 80px;
     width: auto;
@@ -358,20 +352,16 @@ select {
     transition: transform .2s ease, filter .2s ease;
 }
 
-/* efeitozinho premium */
 .nav-logo:hover .nav-logo__img {
     transform: scale(1.05);
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .2));
 }
 
-/* ajuste no mobile */
 .mobile-menu__logo .nav-logo__img {
     height: 65px;
 }
 
-/* =====================================================
-   LINKS DESKTOP
-===================================================== */
+/* Links desktop */
 .nav-links {
     display: flex;
     align-items: center;
@@ -406,9 +396,7 @@ select {
     color: #fff !important;
 }
 
-/* =====================================================
-   AÇÕES NAVBAR
-===================================================== */
+/* Ações navbar */
 .nav-actions {
     display: flex;
     align-items: center;
@@ -431,7 +419,6 @@ select {
     color: var(--accent);
 }
 
-/* tema */
 #icon-sun {
     display: none;
 }
@@ -448,9 +435,7 @@ select {
     display: none;
 }
 
-/* =====================================================
-   HAMBURGUER
-===================================================== */
+/* Hambúrguer */
 .nav-hamburger {
     display: none;
     flex-direction: column;
@@ -477,7 +462,6 @@ select {
     transition: transform var(--t-base), opacity var(--t-base), width var(--t-base);
 }
 
-/* animação pra X */
 .nav-hamburger.open span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -491,9 +475,9 @@ select {
     transform: translateY(-7px) rotate(-45deg);
 }
 
-/* =====================================================
-   MENU MOBILE
-===================================================== */
+/* ----------------------------------------------------------------
+   6. MENU MOBILE
+---------------------------------------------------------------- */
 .mobile-overlay {
     position: fixed;
     inset: 0;
@@ -529,7 +513,6 @@ select {
     transform: translateX(0);
 }
 
-/* header */
 .mobile-menu__header {
     display: flex;
     align-items: center;
@@ -554,7 +537,6 @@ select {
     color: #dc2626;
 }
 
-/* lista */
 .mobile-menu__list {
     flex: 1;
     padding: 1rem .75rem;
@@ -574,7 +556,6 @@ select {
     transform: translateX(0);
 }
 
-/* animação sequencial */
 .mobile-menu.open .mobile-menu__item:nth-child(1) {
     transition-delay: 80ms;
 }
@@ -621,7 +602,6 @@ select {
     color: var(--accent);
 }
 
-/* footer */
 .mobile-menu__footer {
     padding: 1.25rem 1.5rem 1.75rem;
     border-top: 1px solid var(--border);
@@ -636,9 +616,7 @@ select {
     gap: .75rem;
 }
 
-/* =====================================================
-   SOCIAL
-===================================================== */
+/* Social */
 .social-pill {
     display: grid;
     place-items: center;
@@ -665,7 +643,7 @@ select {
 }
 
 /* ----------------------------------------------------------------
-   7. HERO — carrossel de slides
+   7. HERO
 ---------------------------------------------------------------- */
 .hero {
     position: relative;
@@ -677,14 +655,12 @@ select {
     background: var(--green-900);
 }
 
-/* Track */
 .hero-track {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-/* Slides: sobrepostos, transição por opacity */
 .hero-slide {
     position: absolute;
     inset: 0;
@@ -706,7 +682,6 @@ select {
     z-index: 1;
 }
 
-/* Fundos dos slides (gradientes ricos, substituem fotos reais) */
 .hero-slide__bg {
     position: absolute;
     inset: 0;
@@ -735,14 +710,12 @@ select {
     background: linear-gradient(135deg, #2a1008 0%, #6e3a18 45%, #a85828 72%, #d08848 100%);
 }
 
-/* Overlay gradiente */
 .hero-slide__overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(100deg, rgba(0, 0, 0, .62) 0%, rgba(0, 0, 0, .28) 55%, transparent 100%);
 }
 
-/* Conteúdo */
 .hero-slide__content {
     position: relative;
     z-index: 3;
@@ -751,7 +724,6 @@ select {
     margin-inline: auto;
     padding-inline: 1.5rem;
     padding-bottom: 5rem;
-    /* espaço para os controles */
 }
 
 .hero-slide__label {
@@ -829,7 +801,6 @@ select {
     transform: none;
 }
 
-/* Controles (setas + dots) */
 .hero-controls {
     position: absolute;
     bottom: 2rem;
@@ -883,7 +854,6 @@ select {
     width: 24px;
 }
 
-/* Contador (canto inferior direito) */
 .hero-counter {
     position: absolute;
     bottom: 2.2rem;
@@ -911,7 +881,6 @@ select {
     background: rgba(255, 255, 255, .4);
 }
 
-/* Barra de progresso autoplay */
 .hero-progress {
     position: absolute;
     bottom: 0;
@@ -957,7 +926,6 @@ select {
     margin-bottom: .85rem;
 }
 
-/* Stats */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1005,7 +973,6 @@ select {
     margin-top: .5rem;
 }
 
-/* Aside */
 .sobre-aside {
     display: flex;
     flex-direction: column;
@@ -1087,7 +1054,6 @@ select {
     box-shadow: var(--s4);
 }
 
-/* Faixa colorida no topo */
 .mvv-card::before {
     content: '';
     position: absolute;
@@ -1095,7 +1061,6 @@ select {
     left: 0;
     right: 0;
     height: 4px;
-    border-radius: 0;
 }
 
 .mvv-card--green::before {
@@ -1289,7 +1254,6 @@ select {
     font-size: .95rem;
 }
 
-/* Grade de imagens do projeto */
 .panel-imgs {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1311,7 +1275,6 @@ select {
     transform: scale(1.03);
 }
 
-/* Cores dos placeholders de imagem */
 .pimg--a {
     background: linear-gradient(135deg, #1a5538, #3a9068);
 }
@@ -1393,7 +1356,6 @@ select {
     color: #fff;
 }
 
-/* Grid masonry-like */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1438,7 +1400,6 @@ select {
     transform: scale(1.08);
 }
 
-/* Cores dos thumbs */
 .g1 {
     background: linear-gradient(135deg, #1a5038, #3a9068);
 }
@@ -1684,7 +1645,77 @@ select {
     font-weight: 700;
 }
 
-/* CTA Banner */
+
+/* ================================================================
+   CAIXA PIX
+================================================================ */
+.pix-box {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background: var(--surface);
+    border: 2px dashed var(--accent);
+    border-radius: var(--r-md);
+    padding: 1rem 1.15rem;
+    margin-block: .25rem;
+}
+
+.pix-label {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.pix-label i {
+    font-size: 1rem;
+}
+
+.pix-key {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: .02em;
+    word-break: break-all;
+}
+
+.pix-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    align-self: flex-start;
+    margin-top: .25rem;
+    padding: .35rem .9rem;
+    border-radius: var(--r-full);
+    font-size: .78rem;
+    font-weight: 600;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background var(--t-fast), transform var(--t-fast);
+}
+
+.pix-copy:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.pix-copy.copied {
+    background: var(--green-500);
+}
+
+.pix-copy i {
+    font-size: .9rem;
+}
+
+/* ================================================================ */
+
 .cta-banner {
     display: flex;
     align-items: center;
@@ -1788,11 +1819,7 @@ select {
     margin-bottom: .65rem;
 }
 
-/* Form */
-.contact-form-wrap {
-    /* just a wrapper */
-}
-
+/* Formulário */
 .contact-form {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -1874,33 +1901,62 @@ select {
     min-height: 110px;
 }
 
-/* Checkbox */
+/* ================================================================
+   CHECKBOX LGPD — grid 2 colunas para não bloquear o clique
+================================================================ */
 .field--check {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: .75rem;
+    /* substitui o flex herdado de .field por grid */
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    /* col 1: caixa | col 2: texto  */
+    grid-template-rows: auto auto;
+    /* row 1: label | row 2: erro   */
+    column-gap: .75rem;
+    row-gap: .15rem;
+    align-items: start;
     margin-bottom: 1.25rem;
+    /* anula propriedades flex herdadas */
+    flex-direction: unset;
+    gap: unset;
 }
 
 .field--check input[type="checkbox"] {
+    grid-column: 1;
+    grid-row: 1;
+    /* tamanho fixo — não herda width:100% de .field input */
     width: 18px;
     height: 18px;
-    flex-shrink: 0;
+    margin-top: 3px;
+    /* alinha com a primeira linha do label */
     accent-color: var(--accent);
-    margin-top: 2px;
     cursor: pointer;
+    /* garante que o elemento seja clicável */
+    position: relative;
+    z-index: 1;
+    /* remove a aparência padrão que pode variar entre browsers */
+    appearance: auto;
+    -webkit-appearance: auto;
 }
 
 .field--check label {
+    grid-column: 2;
+    grid-row: 1;
     font-size: .84rem;
     color: var(--text-2);
     cursor: pointer;
-    line-height: 1.5;
+    line-height: 1.55;
+    /* remove width:100% herdado e flex-shrink */
+    width: auto;
 }
 
+/* mensagem de erro fica abaixo do label, não ao lado do checkbox */
 .field--check .field-error {
-    margin-top: .25rem;
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0;
 }
+
+/* ================================================================ */
 
 .field-error {
     font-size: .78rem;
@@ -1962,10 +2018,9 @@ select {
     margin-bottom: .65rem;
 }
 
-/* Logo no footer */
 .footer-logo {
-  display: inline-block;
-  margin-bottom: 1.25rem;
+    display: inline-block;
+    margin-bottom: 1.25rem;
 }
 
 .footer-logo:hover {
@@ -2122,7 +2177,7 @@ select {
 }
 
 /* ----------------------------------------------------------------
-   17. BOTÃO VOLTAR AO TOPO
+   17. VOLTAR AO TOPO
 ---------------------------------------------------------------- */
 .back-top {
     position: fixed;
@@ -2220,7 +2275,7 @@ select {
    20. RESPONSIVIDADE
 ---------------------------------------------------------------- */
 
-/* — Tablet (≤ 1024px) — */
+/* Tablet ≤ 1024px */
 @media (max-width: 1024px) {
     .sobre-grid {
         grid-template-columns: 1fr;
@@ -2284,19 +2339,18 @@ select {
     }
 }
 
-/* — Mostrar hambúrguer a partir de 900px — */
+/* Hambúrguer a partir de 900px */
 @media (max-width: 900px) {
     .nav-links {
         display: none;
     }
 
-    /* oculta links desktop */
     .nav-hamburger {
         display: flex;
     }
 }
 
-/* — Mobile (≤ 768px) — */
+/* Mobile ≤ 768px */
 @media (max-width: 768px) {
     :root {
         --nav-h: 60px;
@@ -2306,7 +2360,6 @@ select {
         padding-block: 4rem;
     }
 
-    /* Hero */
     .hero {
         max-height: none;
         height: 100svh;
@@ -2325,7 +2378,6 @@ select {
         display: none;
     }
 
-    /* Sobre */
     .sobre-aside {
         grid-template-columns: 1fr;
     }
@@ -2334,7 +2386,6 @@ select {
         grid-template-columns: 1fr 1fr;
     }
 
-    /* Galeria */
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -2347,7 +2398,6 @@ select {
         grid-row: span 1;
     }
 
-    /* Footer */
     .footer-grid {
         grid-template-columns: 1fr;
     }
@@ -2357,12 +2407,10 @@ select {
         text-align: center;
     }
 
-    /* Form */
     .field-row {
         grid-template-columns: 1fr;
     }
 
-    /* Projetos */
     .tabs {
         gap: .35rem;
     }
@@ -2377,7 +2425,6 @@ select {
         grid-template-rows: 150px;
     }
 
-    /* Lightbox */
     .lightbox__nav--prev {
         left: .5rem;
     }
@@ -2387,7 +2434,7 @@ select {
     }
 }
 
-/* — Mobile pequeno (≤ 480px) — */
+/* Mobile pequeno ≤ 480px */
 @media (max-width: 480px) {
     .container {
         padding-inline: 1rem;

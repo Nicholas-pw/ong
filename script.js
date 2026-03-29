@@ -454,33 +454,70 @@ function initContactForm() {
     f?.addEventListener('input', () => { if (f.classList.contains('error')) validate(f); });
   });
 
-  // Envio
-  form.addEventListener('submit', async e => {
+  // ── Número de WhatsApp do instituto (só dígitos, com DDI) ──────
+  // ⚠️  TROQUE pelo número real antes de publicar:
+  const WA_NUMBER = '5521999999999';
+
+  // ── Rótulos legíveis para os valores do select de assunto ──────
+  const ASSUNTOS = {
+    voluntariado: 'Voluntariado',
+    parceria:     'Parceria institucional',
+    doacao:       'Doação',
+    imprensa:     'Imprensa / mídia',
+    outro:        'Outro assunto',
+  };
+
+  /**
+   * Monta o texto formatado que será enviado ao WhatsApp.
+   * Cada campo ocupa uma linha, com emoji para facilitar a leitura.
+   */
+  function buildWhatsAppMessage(data) {
+    const assunto = ASSUNTOS[data.assunto] ?? data.assunto;
+    const tel     = data.telefone?.trim() || 'Não informado';
+
+    return (
+      `🌱 *Nova mensagem — Instituto Raízes Vivas*\n\n` +
+      `👤 *Nome:* ${data.nome}\n` +
+      `📧 *E-mail:* ${data.email}\n` +
+      `📱 *Telefone:* ${tel}\n` +
+      `📋 *Assunto:* ${assunto}\n\n` +
+      `💬 *Mensagem:*\n${data.mensagem}`
+    );
+  }
+
+  // ── Envio ──────────────────────────────────────────────────────
+  form.addEventListener('submit', e => {
     e.preventDefault();
 
+    // 1. Valida todos os campos e o checkbox LGPD
     const allOk = Object.keys(rules).every(id => validate($(`#${id}`))) && validateLgpd();
     if (!allOk) {
-      form.querySelector('.error, [aria-invalid="true"]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Rola até o primeiro campo com erro
+      form.querySelector('.error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando…';
+    // 2. Coleta os dados do formulário
+    const data = Object.fromEntries(new FormData(form));
 
-    try {
-      // Simula envio (substituir por fetch real em produção)
-      await new Promise(r => setTimeout(r, 1800));
-      const data = Object.fromEntries(new FormData(form));
-      console.log('📬 Formulário enviado:', data);
+    // 3. Monta a URL do WhatsApp com a mensagem codificada
+    const msg = buildWhatsAppMessage(data);
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
 
-      form.reset();
-      showFeedback('success', '✅ Mensagem enviada! Retornaremos em até 2 dias úteis.');
-    } catch {
-      showFeedback('error', '❌ Erro ao enviar. Tente novamente ou use o WhatsApp.');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = '<i class="ph ph-paper-plane-tilt"></i> Enviar mensagem';
-    }
+    // 4. Feedback visual antes de abrir o WhatsApp
+    showFeedback(
+      'success',
+      '✅ Tudo certo! Abrindo o WhatsApp para você enviar a mensagem…'
+    );
+
+    // 5. Reseta o formulário
+    form.reset();
+
+    // 6. Abre o WhatsApp em nova aba após um pequeno delay
+    //    (dá tempo do usuário ler o feedback)
+    setTimeout(() => {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }, 900);
   });
 
   function showFeedback(type, msg) {
@@ -543,6 +580,39 @@ function revealOnLoad() {
 /* ================================================================
    INICIALIZAÇÃO — aguarda o DOM estar pronto
 ================================================================ */
+
+/* ================================================================
+   COPIAR CHAVE PIX — clique no botão copia e mostra feedback
+================================================================ */
+function initPixCopy() {
+  document.querySelectorAll('.pix-copy').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const key = btn.dataset.pix;
+      try {
+        await navigator.clipboard.writeText(key);
+      } catch {
+        // fallback para browsers sem Clipboard API
+        const ta = document.createElement('textarea');
+        ta.value = key;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      // Feedback visual
+      const original = btn.innerHTML;
+      btn.innerHTML = '<i class="ph ph-check"></i> Copiado!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.innerHTML = original;
+        btn.classList.remove('copied');
+      }, 2200);
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initMobileMenu();
@@ -557,6 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initBackToTop();
   initFooterYear();
+  initPixCopy();
   revealOnLoad();
 
   console.log(
