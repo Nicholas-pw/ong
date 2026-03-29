@@ -5,17 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Instituto Via Solidária – Transformando vidas através do esporte, educação e cultura na Comunidade do Sapateiro, Rio de Janeiro." />
+        content="Instituto Via Solidária – Transformando vidas através do esporte, educação e cultura na comunidade de Cosmos, Rio de Janeiro." />
     <title>Instituto Via Solidária</title>
 
-    <!-- Fontes: Fraunces (display) + Outfit (corpo) -->
+    <!-- Fontes premium: Playfair Display + DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap"
         rel="stylesheet" />
 
-    <!-- Ícones Phosphor -->
+    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
 
     <link rel="stylesheet" href="style.css" />
@@ -23,16 +23,13 @@
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- ===================== NAVBAR ===================== -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
-
-            <!-- LOGO -->
             <a href="#home" class="nav-logo">
-                <img src="logo.png" alt="Raízes Vivas" class="nav-logo__img">
+                <img src="logo.png" alt="Instituto Via Solidária" class="nav-logo__img">
             </a>
 
-            <!-- LINKS DESKTOP -->
             <nav class="nav-links" id="nav-links">
                 <a href="#sobre" class="nav-link">Sobre</a>
                 <a href="#missao" class="nav-link">Missão</a>
@@ -42,115 +39,68 @@
                 <a href="#contato" class="nav-link nav-link--cta">Contato</a>
             </nav>
 
-            <!-- AÇÕES -->
             <div class="nav-actions">
-
-                <!-- Tema -->
-                <button class="nav-btn-icon" id="theme-toggle">
+                <button class="nav-btn-icon" id="theme-toggle" aria-label="Alternar tema">
                     <i class="ph ph-sun" id="icon-sun"></i>
                     <i class="ph ph-moon" id="icon-moon"></i>
                 </button>
-
-                <!-- Hamburguer -->
-                <button class="nav-hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
                 </button>
-
             </div>
-
         </div>
     </header>
 
-    <!-- ================= MENU MOBILE ================= -->
+    <!-- ===================== MENU MOBILE ===================== -->
     <div class="mobile-overlay" id="mobile-overlay"></div>
-
-    <nav class="mobile-menu" id="mobile-menu">
-
+    <nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <div class="mobile-menu__header">
-            <a href="#home" class="nav-logo mobile-menu__logo">
-                <img src="logo.png" alt="Raízes Vivas" class="nav-logo__img">
+            <a href="#home" class="nav-logo">
+                <img src="logo.png" alt="Instituto Via Solidária" class="nav-logo__img">
             </a>
-
-            <button class="mobile-menu__close" id="mobile-close">
+            <button class="mobile-menu__close" id="mobile-close" aria-label="Fechar menu">
                 <i class="ph ph-x"></i>
             </button>
         </div>
-
         <ul class="mobile-menu__list">
-            <li class="mobile-menu__item">
-                <a href="#sobre" class="mobile-menu__link">
-                    <i class="ph ph-info"></i><span>Sobre Nós</span>
-                </a>
+            <li><a href="#sobre" class="mobile-menu__link"><i class="ph ph-info"></i><span>Sobre Nós</span></a></li>
+            <li><a href="#missao" class="mobile-menu__link"><i class="ph ph-heart"></i><span>Missão & Valores</span></a>
             </li>
-
-            <li class="mobile-menu__item">
-                <a href="#missao" class="mobile-menu__link">
-                    <i class="ph ph-heart"></i><span>Missão & Valores</span>
-                </a>
+            <li><a href="#projetos" class="mobile-menu__link"><i
+                        class="ph ph-rocket-launch"></i><span>Projetos</span></a></li>
+            <li><a href="#galeria" class="mobile-menu__link"><i class="ph ph-images"></i><span>Galeria</span></a></li>
+            <li><a href="#ajudar" class="mobile-menu__link"><i class="ph ph-hand-heart"></i><span>Como Ajudar</span></a>
             </li>
-
-            <li class="mobile-menu__item">
-                <a href="#projetos" class="mobile-menu__link">
-                    <i class="ph ph-rocket-launch"></i><span>Projetos</span>
-                </a>
-            </li>
-
-            <li class="mobile-menu__item">
-                <a href="#galeria" class="mobile-menu__link">
-                    <i class="ph ph-images"></i><span>Galeria</span>
-                </a>
-            </li>
-
-            <li class="mobile-menu__item">
-                <a href="#ajudar" class="mobile-menu__link">
-                    <i class="ph ph-hand-heart"></i><span>Como Ajudar</span>
-                </a>
-            </li>
-
-            <li class="mobile-menu__item">
-                <a href="#contato" class="mobile-menu__link">
-                    <i class="ph ph-envelope"></i><span>Contato</span>
-                </a>
-            </li>
+            <li><a href="#contato" class="mobile-menu__link"><i class="ph ph-envelope"></i><span>Contato</span></a></li>
         </ul>
-
         <div class="mobile-menu__footer">
-
-            <a href="https://wa.me/5521920356707" target="_blank" class="btn btn--whatsapp btn--full">
+            <a href="https://wa.me/5521920356707" target="_blank" rel="noopener" class="btn btn--whatsapp btn--full">
                 <i class="ph ph-whatsapp-logo"></i> Fale pelo WhatsApp
             </a>
-
-            <div class="mobile-menu__social">
-                <a href="#" class="social-pill"><i class="ph ph-instagram-logo"></i></a>
+            <div class="mobile-social">
+                <a href="https://www.instagram.com/institutoviasolidaria" target="_blank" class="social-pill"><i
+                        class="ph ph-instagram-logo"></i></a>
                 <a href="#" class="social-pill"><i class="ph ph-facebook-logo"></i></a>
-                <a href="#" class="social-pill"><i class="ph ph-youtube-logo"></i></a>
             </div>
-
         </div>
     </nav>
 
-    <!-- =====================================================
-       HERO — carrossel slide
-  ===================================================== -->
+    <!-- ===================== HERO ===================== -->
     <section class="hero" id="home">
-
-        <!-- Track de slides -->
         <div class="hero-track" id="hero-track">
 
             <div class="hero-slide hero-slide--1 active">
                 <div class="hero-slide__bg"></div>
                 <div class="hero-slide__overlay"></div>
                 <div class="hero-slide__content">
-                    <p class="hero-slide__label">Desde 2003
-                    <p>
-                    <h1 class="hero-slide__title">Solidariedade<br /><em>que gera</em><br />transformação</h1>
-                    <p class="hero-slide__sub">Cultura, Educação, Saúde, Esporte e Assitência como caminhos de dignidade
-                        para a sociedade!</p>
-                    <div class="hero-slide__btns">
-                        <a href="#sobre" class="btn btn--primary">Conheça o Instituto</a>
-                        <a href="#projetos" class="btn btn--outline-white">Ver Projetos</a>
+                    <div class="hero-eyebrow"><span class="hero-eyebrow__line"></span><span>Desde 2003</span></div>
+                    <h1 class="hero-title">Solidariedade<br /><em>que gera</em><br />transformação</h1>
+                    <p class="hero-sub">Cultura, Educação, Saúde, Esporte e Assistência como caminhos de dignidade para
+                        a sociedade.</p>
+                    <div class="hero-btns">
+                        <a href="#sobre" class="btn btn--hero-primary">Conheça o Instituto</a>
+                        <a href="#projetos" class="btn btn--hero-ghost">Ver Projetos <i
+                                class="ph ph-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -159,13 +109,15 @@
                 <div class="hero-slide__bg"></div>
                 <div class="hero-slide__overlay"></div>
                 <div class="hero-slide__content">
-                    <p class="hero-slide__label">Projeto Esportivo</p>
-                    <h1 class="hero-slide__title">Além da<br /><em>quadra</em>,<br />para a vida</h1>
-                    <p class="hero-slide__sub">Mais de 300 jovens já descobriram no vôlei um propósito, disciplina e um
-                        time que acredita neles.</p>
-                    <div class="hero-slide__btns">
-                        <a href="#projetos" class="btn btn--primary">Nossos Projetos</a>
-                        <a href="#ajudar" class="btn btn--outline-white">Seja Voluntário</a>
+                    <div class="hero-eyebrow"><span class="hero-eyebrow__line"></span><span>Projeto Esportivo</span>
+                    </div>
+                    <h1 class="hero-title">Além da<br /><em>quadra</em>,<br />para a vida</h1>
+                    <p class="hero-sub">Mais de 300 jovens já descobriram no vôlei um propósito, disciplina e um time
+                        que acredita neles.</p>
+                    <div class="hero-btns">
+                        <a href="#projetos" class="btn btn--hero-primary">Nossos Projetos</a>
+                        <a href="#ajudar" class="btn btn--hero-ghost">Seja Voluntário <i
+                                class="ph ph-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -174,13 +126,15 @@
                 <div class="hero-slide__bg"></div>
                 <div class="hero-slide__overlay"></div>
                 <div class="hero-slide__content">
-                    <p class="hero-slide__label">Comunidade em Ação</p>
-                    <h1 class="hero-slide__title">Juntos<br /><em>somos</em><br />mais fortes</h1>
-                    <p class="hero-slide__sub">Voluntários, parceiros e doadores: cada contribuição planta uma semente
-                        que muda destinos.</p>
-                    <div class="hero-slide__btns">
-                        <a href="#ajudar" class="btn btn--primary">Como Ajudar</a>
-                        <a href="#contato" class="btn btn--outline-white">Fale Conosco</a>
+                    <div class="hero-eyebrow"><span class="hero-eyebrow__line"></span><span>Comunidade em Ação</span>
+                    </div>
+                    <h1 class="hero-title">Juntos<br /><em>somos</em><br />mais fortes</h1>
+                    <p class="hero-sub">Voluntários, parceiros e doadores: cada contribuição planta uma semente que muda
+                        destinos.</p>
+                    <div class="hero-btns">
+                        <a href="#ajudar" class="btn btn--hero-primary">Como Ajudar</a>
+                        <a href="#contato" class="btn btn--hero-ghost">Fale Conosco <i
+                                class="ph ph-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -189,223 +143,220 @@
 
         <!-- Controles -->
         <div class="hero-controls">
-            <button class="hero-arrow" id="hero-prev" aria-label="Slide anterior">
-                <i class="ph ph-arrow-left"></i>
-            </button>
-
+            <button class="hero-arrow" id="hero-prev" aria-label="Slide anterior"><i
+                    class="ph ph-arrow-left"></i></button>
             <div class="hero-indicators" id="hero-indicators" role="tablist">
                 <button class="hero-dot active" role="tab" aria-selected="true" aria-label="Slide 1"
                     data-slide="0"></button>
                 <button class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 2" data-slide="1"></button>
                 <button class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-slide="2"></button>
             </div>
-
-            <button class="hero-arrow" id="hero-next" aria-label="Próximo slide">
-                <i class="ph ph-arrow-right"></i>
-            </button>
+            <button class="hero-arrow" id="hero-next" aria-label="Próximo slide"><i
+                    class="ph ph-arrow-right"></i></button>
         </div>
 
-        <!-- Contador de slide -->
         <div class="hero-counter" aria-live="polite">
             <span id="slide-current">01</span>
             <span class="hero-counter__sep"></span>
             <span class="hero-counter__total">03</span>
         </div>
 
-        <!-- Barra de progresso do autoplay -->
         <div class="hero-progress">
             <div class="hero-progress__bar" id="hero-progress-bar"></div>
         </div>
 
+        <!-- Scroll indicator -->
+        <div class="hero-scroll-hint">
+            <span>Role para descobrir</span>
+            <div class="hero-scroll-hint__icon"><i class="ph ph-mouse-scroll"></i></div>
+        </div>
     </section>
 
-    <!-- =====================================================
-       SOBRE NÓS
-  ===================================================== -->
+    <!-- ===================== NÚMEROS IMPACTO (faixa) ===================== -->
+    <div class="impact-strip">
+        <div class="container impact-strip__inner">
+            <div class="impact-item reveal">
+                <span class="impact-num" data-target="400">0</span><span class="impact-plus">+</span>
+                <span class="impact-label">pessoas atendidas</span>
+            </div>
+            <div class="impact-divider"></div>
+            <div class="impact-item reveal">
+                <span class="impact-num" data-target="23">0</span>
+                <span class="impact-label">anos de atuação</span>
+            </div>
+            <div class="impact-divider"></div>
+            <div class="impact-item reveal">
+                <span class="impact-num" data-target="6">0</span>
+                <span class="impact-label">projetos ativos</span>
+            </div>
+            <div class="impact-divider"></div>
+            <div class="impact-item reveal">
+                <span class="impact-num" data-target="280">0</span><span class="impact-plus">+</span>
+                <span class="impact-label">refeições por dia</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== SOBRE NÓS ===================== -->
     <section class="section" id="sobre">
         <div class="container">
-
-            <div class="section-header reveal">
-                <span class="tag">Quem somos</span>
-                <h2 class="section-title">Sobre o Instituto<br /><em>Via Solidária</em></h2>
-            </div>
-
-            <div class="sobre-grid">
+            <div class="sobre-layout">
 
                 <!-- Coluna texto -->
-                <div class="sobre-text reveal">
-                    <h3 class="sobre-subtitle">Nossa história</h3>
+                <div class="sobre-text">
+                    <div class="section-label reveal">
+                        <span class="label-line"></span>
+                        <span>Quem somos</span>
+                    </div>
+                    <h2 class="section-title reveal">Sobre o Instituto<br /><em>Via Solidária</em></h2>
 
-                    <p>Desde a sua fundação, o instituto se propõe a ser muito mais do que um espaço físico: é um
-                        ambiente de troca, acolhimento e cuidado com o outro. Um lugar onde cada pessoa é vista, ouvida
-                        e incentivada a descobrir seu próprio potencial.</p>
+                    <p class="sobre-lead reveal">Desde a sua fundação, o instituto se propõe a ser muito mais do que um
+                        espaço físico: é um ambiente de troca, acolhimento e cuidado com o outro.</p>
 
-                    <p>O Instituto Via Solidária também se consolida como um espaço de oportunidades, especialmente
-                        para jovens que buscam crescimento pessoal e profissional. Aqui, cada trajetória é valorizada, e
-                        cada conquista, por menor que pareça, é um passo importante rumo a um futuro mais digno e
-                        promissor.</p>
+                    <div class="sobre-body reveal">
+                        <p>Um lugar onde cada pessoa é vista, ouvida e incentivada a descobrir seu próprio potencial. O
+                            Instituto Via Solidária se consolida como um espaço de oportunidades, especialmente para
+                            jovens que buscam crescimento pessoal e profissional.</p>
+                        <p>Seguimos firmes no propósito de gerar impacto positivo, acreditando que, quando oferecemos
+                            ferramentas, apoio e esperança, contribuímos para formar cidadãos mais conscientes e capazes
+                            de transformar a realidade ao seu redor.</p>
+                    </div>
 
-                    <p>Seguimos firmes no propósito de gerar impacto positivo, acreditando que, quando oferecemos
-                        ferramentas, apoio e esperança, contribuímos para formar cidadãos mais conscientes, preparados e
-                        capazes de transformar a realidade ao seu redor.</p>
-
-
-                    <h3 class="sobre-subtitle" style="margin-top:2rem">Por que surgimos</h3>
-                    <p>O Instituto Via Solidária nasceu, em 2003, a partir do sonho e da convicção de Anselmo Jund de
-                        que a transformação social só é possível por meio da educação, do acesso a oportunidades e do
-                        fortalecimento de projetos que valorizem as pessoas. Acreditamos que investir no desenvolvimento
-                        humano é o caminho para construir um país mais justo, igualitário e cheio de possibilidades para
-                        todos.</p>
-
-                    <!-- Stats -->
-                    <div class="stats-grid">
-                        <div class="stat-card reveal">
-                            <span class="stat-num" data-target="400">0</span><span class="stat-plus">+</span>
-                            <span class="stat-label">atendidos</span>
+                    <div class="sobre-origem reveal">
+                        <div class="sobre-origem__icon"><i class="ph ph-seedling"></i></div>
+                        <div>
+                            <strong>Nossa origem</strong>
+                            <p>O Instituto Via Solidária nasceu em 2003, a partir do sonho e convicção de Anselmo Jund
+                                de que a transformação social só é possível por meio da educação e do fortalecimento
+                                humano.</p>
                         </div>
-                        <div class="stat-card reveal">
-                            <span class="stat-num" data-target="23">0</span>
-                            <span class="stat-label">anos de atuação</span>
-                        </div>
-                        <div class="stat-card reveal">
-                            <span class="stat-num" data-target="5">0</span>
-                            <span class="stat-label">projetos ativos</span>
-                        </div>
-                        <!-- <div class="stat-card reveal">
-                            <span class="stat-num" data-target="60">0</span><span class="stat-plus">+</span>
-                            <span class="stat-label">voluntários</span>
-                        </div> -->
                     </div>
                 </div>
 
-                <!-- Coluna lateral -->
-                <aside class="sobre-aside reveal">
-                    <div class="info-card"><i class="ph ph-map-pin"></i>
-                        <div><strong>Localização</strong>
-                            <p>Estr. do Campinho, 4700<br />Cosmos, Rio de Janeiro — RJ, CEP: 23066-540</p>
+                <!-- Coluna visual/cards -->
+                <aside class="sobre-aside">
+                    <div class="info-card reveal">
+                        <div class="info-card__ico"><i class="ph ph-map-pin"></i></div>
+                        <div>
+                            <strong>Localização</strong>
+                            <p>Estr. do Campinho, 4700 — Cosmos<br />Rio de Janeiro — RJ, CEP 23066-540</p>
                         </div>
                     </div>
-                    <!-- <div class="info-card"><i class="ph ph-users-three"></i>
-                        <div><strong>Público atendido</strong>
-                            <p>Crianças (6–12), adolescentes (13–17), jovens adultos (18–24) e famílias vulneráveis.</p>
-                        </div>
-                    </div> -->
-                    <div class="info-card"><i class="ph ph-calendar-check"></i>
-                        <div><strong>Fundação</strong>
+                    <div class="info-card reveal">
+                        <div class="info-card__ico"><i class="ph ph-calendar-check"></i></div>
+                        <div>
+                            <strong>Fundação</strong>
                             <p>2003, por moradores da própria comunidade.</p>
                         </div>
                     </div>
-                    <div class="info-card"><i class="ph ph-certificate"></i>
-                        <div><strong>Informações</strong>
-                            <p>INSTITUTO VIA SOLIDARIA – IVIS CNPJ 15.018.522/0001-98</p>
+                    <div class="info-card reveal">
+                        <div class="info-card__ico"><i class="ph ph-certificate"></i></div>
+                        <div>
+                            <strong>Registro</strong>
+                            <p>INSTITUTO VIA SOLIDARIA – IVIS<br />CNPJ 15.018.522/0001-98</p>
                         </div>
                     </div>
-                    <!-- <div class="sobre-foto" aria-hidden="true"><span>📸 Equipe Via Solidária, 2024</span></div> -->
+
+                    <!-- Depoimento fake/inspiracional -->
+                    <blockquote class="sobre-quote reveal">
+                        <i class="ph ph-quotes sobre-quote__mark"></i>
+                        <p>Cada conquista, por menor que pareça, é um passo importante rumo a um futuro mais digno e
+                            promissor.</p>
+                        <cite>— Anselmo Jund, Fundador</cite>
+                    </blockquote>
                 </aside>
 
             </div>
         </div>
     </section>
 
-    <!-- =====================================================
-       MISSÃO, VISÃO E VALORES
-  ===================================================== -->
-    <section class="section section--alt" id="missao">
+    <!-- ===================== MISSÃO, VISÃO, VALORES ===================== -->
+    <section class="section section--dark" id="missao">
         <div class="container">
-
-            <div class="section-header reveal">
-                <span class="tag">Nossos princípios</span>
-                <h2 class="section-title">Missão, Visão<br /><em>e Valores</em></h2>
+            <div class="section-label section-label--light reveal">
+                <span class="label-line"></span>
+                <span>Nossos Princípios</span>
             </div>
+            <h2 class="section-title section-title--light reveal">Missão, Visão<br /><em>e Valores</em></h2>
 
             <div class="mvv-grid">
-
-                <article class="mvv-card mvv-card--green reveal">
+                <article class="mvv-card mvv-card--1 reveal">
+                    <div class="mvv-card__num">01</div>
                     <div class="mvv-icon"><i class="ph ph-heart-straight"></i></div>
                     <h3>Missão</h3>
-                    <p>Contribuir para o processo de promoção social, dos atendidos e suas famílias, através da
+                    <p>Contribuir para o processo de promoção social dos atendidos e suas famílias, através da
                         construção de um papel de empoderamento da pessoa enquanto sujeito de direitos, viabilizando
-                        suas demandas sociais, com vistas a construção de uma sociedade menos desigual.</p>
+                        suas demandas sociais.</p>
+                    <div class="mvv-card__accent"></div>
                 </article>
 
-                <article class="mvv-card mvv-card--amber reveal">
+                <article class="mvv-card mvv-card--2 reveal">
+                    <div class="mvv-card__num">02</div>
                     <div class="mvv-icon"><i class="ph ph-eye"></i></div>
                     <h3>Visão</h3>
                     <p>Impulsionar a transformação social com ações concretas e sustentáveis, combatendo as
-                        desigualdades e gerando oportunidades que transformam vidas, fortalecem comunidades e constroem
-                        um futuro mais justo, inclusivo e cheio de possibilidades.</p>
+                        desigualdades e gerando oportunidades que fortalecem comunidades e constroem um futuro mais
+                        justo e inclusivo.</p>
+                    <div class="mvv-card__accent"></div>
                 </article>
 
-                <article class="mvv-card mvv-card--terra reveal">
+                <article class="mvv-card mvv-card--3 reveal">
+                    <div class="mvv-card__num">03</div>
                     <div class="mvv-icon"><i class="ph ph-star-four"></i></div>
                     <h3>Valores</h3>
                     <ul class="mvv-list">
-                        <li><i class="ph ph-check-circle"></i> Comprometimento</li>
-                        <li><i class="ph ph-check-circle"></i> Transparência</li>
-                        <li><i class="ph ph-check-circle"></i> Trabalho em Equipe</li>
-                        <li><i class="ph ph-check-circle"></i> Diversidade</li>
-                        <li><i class="ph ph-check-circle"></i> Construção coletiva</li>
-                        <li><i class="ph ph-check-circle"></i> Alegria como motor de transformação</li>
+                        <li><i class="ph ph-check"></i> Comprometimento</li>
+                        <li><i class="ph ph-check"></i> Transparência</li>
+                        <li><i class="ph ph-check"></i> Trabalho em Equipe</li>
+                        <li><i class="ph ph-check"></i> Diversidade</li>
+                        <li><i class="ph ph-check"></i> Construção Coletiva</li>
+                        <li><i class="ph ph-check"></i> Alegria como transformação</li>
                     </ul>
+                    <div class="mvv-card__accent"></div>
                 </article>
-
             </div>
         </div>
     </section>
 
-    <!-- =====================================================
-       PROJETOS
-  ===================================================== -->
+    <!-- ===================== PROJETOS ===================== -->
     <section class="section" id="projetos">
         <div class="container">
-
-            <div class="section-header reveal">
-                <span class="tag">O que fazemos</span>
-                <h2 class="section-title">Nossos<br /><em>Projetos</em></h2>
-                <p class="section-desc">Cada projeto nasce de uma necessidade real da comunidade, construído com ela e
-                    para ela.</p>
+            <div class="section-label reveal"><span class="label-line"></span><span>O que fazemos</span></div>
+            <div class="projetos-header">
+                <h2 class="section-title reveal">Nossos<br /><em>Projetos</em></h2>
+                <p class="section-desc reveal">Cada projeto nasce de uma necessidade real da comunidade, construído com
+                    ela e para ela.</p>
             </div>
 
-            <!-- Tabs -->
+            <!-- Tabs redesenhadas -->
             <div class="tabs" role="tablist" aria-label="Projetos">
-                <button class="tab active" role="tab" data-panel="esporte" aria-selected="true">
-                    <i class="ph ph-volleyball"></i> Esporte
-                </button>
-                <button class="tab" role="tab" data-panel="cozinha" aria-selected="false">
-                    <i class="ph ph-hands-clapping"></i> Cozinha Comunitária
-                </button>
-                <button class="tab" role="tab" data-panel="cursos" aria-selected="false">
-                    <i class="ph ph-book-open-text"></i> Cursos Profissionalizantes
-                </button>
-                <button class="tab" role="tab" data-panel="biblioteca" aria-selected="false">
-                    <i class="ph ph-confetti"></i> Biblioteca Comunitária
-                </button>
-                <button class="tab" role="tab" data-panel="clinica" aria-selected="false">
-                    <i class="ph ph-confetti"></i> Clínica Social
-                </button>
-                <button class="tab" role="tab" data-panel="complementacao" aria-selected="false">
-                    <i class="ph ph-confetti"></i> Completamentação Educacional
-                </button>
+                <button class="tab active" role="tab" data-panel="esporte" aria-selected="true"><i
+                        class="ph ph-volleyball"></i><span>Esporte</span></button>
+                <button class="tab" role="tab" data-panel="cozinha" aria-selected="false"><i
+                        class="ph ph-cooking-pot"></i><span>Cozinha Comunitária</span></button>
+                <button class="tab" role="tab" data-panel="cursos" aria-selected="false"><i
+                        class="ph ph-graduation-cap"></i><span>Cursos</span></button>
+                <button class="tab" role="tab" data-panel="biblioteca" aria-selected="false"><i
+                        class="ph ph-books"></i><span>Biblioteca</span></button>
+                <button class="tab" role="tab" data-panel="clinica" aria-selected="false"><i
+                        class="ph ph-heartbeat"></i><span>Clínica Social</span></button>
+                <button class="tab" role="tab" data-panel="complementacao" aria-selected="false"><i
+                        class="ph ph-chalkboard-teacher"></i><span>Complementação</span></button>
             </div>
 
-            <!-- Painel Escolinha de Vôlei -->
+            <!-- Painéis -->
             <div class="panel active" id="panel-esporte" role="tabpanel">
                 <div class="panel-inner reveal">
+                    <div class="panel-visual panel-visual--1">
+                        <div class="panel-visual__badge">🏐 Escolinha de Vôlei</div>
+                    </div>
                     <div class="panel-text">
-                        <span class="panel-tag">🏐 Escolinha de Vôlei</span>
-                        <h3 class="panel-title">Formando Talentos e Valores</h3>
-
-                        <p>
-                            Nossa escolinha de vôlei oferece aulas gratuitas para crianças e adolescentes, promovendo
-                            não apenas a prática esportiva, mas também disciplina, trabalho em equipe e desenvolvimento
-                            pessoal.
-                        </p>
-
-                        <p>
-                            Através do esporte, incentivamos hábitos saudáveis, fortalecemos a convivência social e
-                            ajudamos cada aluno a desenvolver seu potencial dentro e fora da quadra.
-                        </p>
-
+                        <h3 class="panel-title">Formando Talentos<br />e Valores</h3>
+                        <p>Nossa escolinha de vôlei oferece aulas gratuitas para crianças e adolescentes, promovendo não
+                            apenas a prática esportiva, mas também disciplina, trabalho em equipe e desenvolvimento
+                            pessoal.</p>
+                        <p>Através do esporte, incentivamos hábitos saudáveis, fortalecemos a convivência social e
+                            ajudamos cada aluno a desenvolver seu potencial dentro e fora da quadra.</p>
                         <div class="pills">
                             <span class="pill"><i class="ph ph-users"></i> Crianças e adolescentes</span>
                             <span class="pill"><i class="ph ph-calendar"></i> Aulas semanais</span>
@@ -413,61 +364,40 @@
                             <span class="pill"><i class="ph ph-trophy"></i> Desenvolvimento esportivo</span>
                         </div>
                     </div>
-
-                    <div class="panel-imgs">
-                        <div class="pimg pimg--a" aria-label="Aula de vôlei infantil"></div>
-                        <div class="pimg pimg--b" aria-label="Treino em equipe"></div>
-                        <div class="pimg pimg--c" aria-label="Crianças jogando vôlei"></div>
-                    </div>
                 </div>
             </div>
 
-            <!-- Painel Cozinha Comunitária -->
             <div class="panel" id="panel-cozinha" role="tabpanel" hidden>
                 <div class="panel-inner reveal">
+                    <div class="panel-visual panel-visual--2">
+                        <div class="panel-visual__badge">🤝 Cozinha Comunitária</div>
+                    </div>
                     <div class="panel-text">
-                        <span class="panel-tag">🤝 Ações Sociais</span>
-                        <h3 class="panel-title">Cozinha Comunitária</h3>
+                        <h3 class="panel-title">Cozinha<br />Comunitária</h3>
                         <p>Nossa cozinha comunitária funciona todos os dias úteis, levando cerca de <strong>280
-                                refeições
-                                diárias a quem precisa.</strong> Cada prato entregue vai além da alimentação: é um gesto
-                            de cuidado,
-                            respeito e esperança, impactando diretamente a vida de centenas de pessoas e fortalecendo a
-                            dignidade em cada entrega.</p>
+                                refeições diárias</strong> a quem precisa. Cada prato entregue vai além da alimentação:
+                            é um gesto de cuidado, respeito e esperança.</p>
+                        <p>Impactamos diretamente a vida de centenas de pessoas, fortalecendo a dignidade em cada
+                            entrega.</p>
                         <div class="pills">
                             <span class="pill"><i class="ph ph-users"></i> 280 pessoas/dia</span>
                             <span class="pill"><i class="ph ph-basket"></i> Alimento para quem precisa</span>
-                            <!-- <span class="pill"><i class="ph ph-heartbeat"></i> Apoio psicossocial</span> -->
-                            <!-- <span class="pill"><i class="ph ph-scales"></i> Assessoria jurídica</span> -->
                         </div>
-                    </div>
-                    <div class="panel-imgs">
-                        <div class="pimg pimg--a" aria-label="Distribuição cestas"></div>
-                        <div class="pimg pimg--b" aria-label="Atendimento social"></div>
-                        <div class="pimg pimg--c" aria-label="Família assistida"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Painel Cursos e Oportunidades -->
             <div class="panel" id="panel-cursos" role="tabpanel" hidden>
                 <div class="panel-inner reveal">
+                    <div class="panel-visual panel-visual--3">
+                        <div class="panel-visual__badge">🎓 Cursos Profissionalizantes</div>
+                    </div>
                     <div class="panel-text">
-                        <span class="panel-tag">🎓 Educação & Oportunidades</span>
-                        <h3 class="panel-title">Formação e Desenvolvimento</h3>
-
-                        <p>
-                            Oferecemos diversas atividades voltadas à educação, capacitação e desenvolvimento pessoal,
-                            criando oportunidades para que crianças, jovens e adultos ampliem seus conhecimentos e
-                            construam novos caminhos.
-                        </p>
-
-                        <p>
-                            Entre as ações, estão cursos, oficinas, apoio educacional e iniciativas que incentivam o
-                            aprendizado contínuo, preparando cada pessoa para os desafios da vida e do mercado de
-                            trabalho.
-                        </p>
-
+                        <h3 class="panel-title">Formação e<br />Desenvolvimento</h3>
+                        <p>Oferecemos diversas atividades voltadas à educação, capacitação e desenvolvimento pessoal,
+                            criando oportunidades para que crianças, jovens e adultos ampliem seus conhecimentos.</p>
+                        <p>Cursos, oficinas e apoio educacional que preparam cada pessoa para os desafios da vida e do
+                            mercado de trabalho.</p>
                         <div class="pills">
                             <span class="pill"><i class="ph ph-book-open"></i> Apoio educacional</span>
                             <span class="pill"><i class="ph ph-chalkboard-teacher"></i> Oficinas</span>
@@ -475,74 +405,41 @@
                             <span class="pill"><i class="ph ph-lightbulb"></i> Desenvolvimento pessoal</span>
                         </div>
                     </div>
-
-                    <div class="panel-imgs">
-                        <div class="pimg pimg--a" aria-label="Atividades educativas"></div>
-                        <div class="pimg pimg--b" aria-label="Oficinas e cursos"></div>
-                        <div class="pimg pimg--c" aria-label="Desenvolvimento pessoal"></div>
-                    </div>
                 </div>
             </div>
 
-            <!-- Painel Biblioteca Comunitária -->
             <div class="panel" id="panel-biblioteca" role="tabpanel" hidden>
                 <div class="panel-inner reveal">
+                    <div class="panel-visual panel-visual--4">
+                        <div class="panel-visual__badge">📚 Biblioteca Comunitária</div>
+                    </div>
                     <div class="panel-text">
-                        <span class="panel-tag">📚 Biblioteca Comunitária</span>
-                        <h3 class="panel-title">Espaço de Leitura e Conhecimento</h3>
-
-                        <p>
-                            Nossa biblioteca comunitária é um espaço aberto para todos, onde realizamos o empréstimo
-                            gratuito de livros e oferecemos um ambiente acolhedor para estudo, leitura e desenvolvimento
-                            pessoal.
-                        </p>
-
-                        <p>
-                            Aqui, incentivamos o hábito da leitura e apoiamos estudantes e moradores da comunidade,
-                            proporcionando acesso ao conhecimento, tranquilidade para estudar e oportunidades de
-                            crescimento.
-                        </p>
-
+                        <h3 class="panel-title">Espaço de Leitura<br />e Conhecimento</h3>
+                        <p>Nossa biblioteca comunitária é um espaço aberto para todos, com empréstimo gratuito de livros
+                            e ambiente acolhedor para estudo, leitura e desenvolvimento pessoal.</p>
+                        <p>Incentivamos o hábito da leitura e apoiamos estudantes e moradores, proporcionando acesso ao
+                            conhecimento e oportunidades de crescimento.</p>
                         <div class="pills">
                             <span class="pill"><i class="ph ph-book-open"></i> Empréstimo de livros</span>
                             <span class="pill"><i class="ph ph-student"></i> Espaço de estudo</span>
                             <span class="pill"><i class="ph ph-brain"></i> Incentivo à leitura</span>
-                            <span class="pill"><i class="ph ph-users"></i> Acesso para a comunidade</span>
+                            <span class="pill"><i class="ph ph-users"></i> Toda a comunidade</span>
                         </div>
-                    </div>
-
-                    <div class="panel-imgs">
-                        <div class="pimg pimg--a" aria-label="Biblioteca comunitária"></div>
-                        <div class="pimg pimg--b" aria-label="Pessoas estudando"></div>
-                        <div class="pimg pimg--c" aria-label="Leitura de livros"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Painel Clínica Social -->
             <div class="panel" id="panel-clinica" role="tabpanel" hidden>
                 <div class="panel-inner reveal">
+                    <div class="panel-visual panel-visual--5">
+                        <div class="panel-visual__badge">🩺 Clínica Social</div>
+                    </div>
                     <div class="panel-text">
-                        <span class="panel-tag">🩺 Clínica Social</span>
-                        <h3 class="panel-title">Cuidado e Desenvolvimento Humano</h3>
-
-                        <p>
-                            Nossa clínica social oferece atendimento acessível e acolhedor, promovendo o cuidado com a
-                            saúde emocional, o desenvolvimento cognitivo e o bem-estar de crianças, jovens e adultos da
-                            comunidade.
-                        </p>
-
-                        <p>
-                            Por meio de profissionais qualificados, realizamos atendimentos que contribuem para o
-                            aprendizado, o equilíbrio emocional e o crescimento pessoal, fortalecendo cada indivíduo em
-                            sua jornada.
-                        </p>
-
-                        <p>
-                            Mais do que atendimentos, proporcionamos um espaço de escuta, acolhimento e transformação,
-                            onde cada pessoa é respeitada e incentivada a desenvolver seu potencial.
-                        </p>
-
+                        <h3 class="panel-title">Cuidado e<br />Desenvolvimento Humano</h3>
+                        <p>Nossa clínica social oferece atendimento acessível e acolhedor, promovendo o cuidado com a
+                            saúde emocional, o desenvolvimento cognitivo e o bem-estar de toda a comunidade.</p>
+                        <p>Profissionais qualificados que contribuem para o aprendizado, o equilíbrio emocional e o
+                            crescimento pessoal de cada indivíduo.</p>
                         <div class="pills">
                             <span class="pill"><i class="ph ph-brain"></i> Psicologia</span>
                             <span class="pill"><i class="ph ph-book"></i> Psicopedagogia</span>
@@ -550,40 +447,21 @@
                             <span class="pill"><i class="ph ph-person-simple-run"></i> Psicomotricidade</span>
                         </div>
                     </div>
-
-                    <div class="panel-imgs">
-                        <div class="pimg pimg--a" aria-label="Atendimento psicológico"></div>
-                        <div class="pimg pimg--b" aria-label="Acompanhamento educacional"></div>
-                        <div class="pimg pimg--c" aria-label="Desenvolvimento humano"></div>
-                    </div>
                 </div>
             </div>
 
-            <!-- Painel Complementação Educacional -->
             <div class="panel" id="panel-complementacao" role="tabpanel" hidden>
                 <div class="panel-inner reveal">
+                    <div class="panel-visual panel-visual--6">
+                        <div class="panel-visual__badge">📖 Complementação Educacional</div>
+                    </div>
                     <div class="panel-text">
-                        <span class="panel-tag">📖 Complementação Educacional</span>
-                        <h3 class="panel-title">Apoio ao Aprendizado</h3>
-
-                        <p>
-                            Nosso programa de complementação educacional oferece suporte ao aprendizado de crianças e
+                        <h3 class="panel-title">Apoio ao<br />Aprendizado</h3>
+                        <p>Nosso programa de complementação educacional oferece suporte ao aprendizado de crianças e
                             adolescentes, auxiliando no desenvolvimento escolar e no fortalecimento das habilidades
-                            básicas de ensino.
-                        </p>
-
-                        <p>
-                            Com atividades de reforço, orientação e acompanhamento, buscamos reduzir dificuldades,
-                            estimular o interesse pelos estudos e contribuir para um melhor desempenho dentro e fora da
-                            escola.
-                        </p>
-
-                        <p>
-                            Acreditamos que a educação é a base para transformar vidas, e por isso criamos um ambiente
-                            acolhedor onde cada aluno é incentivado a aprender, evoluir e acreditar no seu próprio
-                            potencial.
-                        </p>
-
+                            básicas.</p>
+                        <p>Acreditamos que a educação é a base para transformar vidas, por isso criamos um ambiente
+                            acolhedor onde cada aluno é incentivado a aprender e evoluir.</p>
                         <div class="pills">
                             <span class="pill"><i class="ph ph-book-open"></i> Reforço escolar</span>
                             <span class="pill"><i class="ph ph-pencil"></i> Acompanhamento</span>
@@ -591,29 +469,18 @@
                             <span class="pill"><i class="ph ph-lightbulb"></i> Desenvolvimento</span>
                         </div>
                     </div>
-
-                    <div class="panel-imgs">
-                        <div class="pimg pimg--a" aria-label="Reforço escolar"></div>
-                        <div class="pimg pimg--b" aria-label="Crianças estudando"></div>
-                        <div class="pimg pimg--c" aria-label="Atividades educativas"></div>
-                    </div>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- =====================================================
-       GALERIA
-  ===================================================== -->
-    <section class="section section--alt" id="galeria">
+    <!-- ===================== GALERIA ===================== -->
+    <section class="section section--warm" id="galeria">
         <div class="container">
-
-            <div class="section-header reveal">
-                <span class="tag">Memórias &amp; momentos</span>
-                <h2 class="section-title">Nossa<br /><em>Galeria</em></h2>
-                <p class="section-desc">Clique em qualquer imagem para ampliar.</p>
-            </div>
+            <div class="section-label reveal"><span class="label-line"></span><span>Memórias & Momentos</span></div>
+            <h2 class="section-title reveal">Nossa<br /><em>Galeria</em></h2>
+            <p class="section-desc reveal">Clique em qualquer imagem para ampliar.</p>
 
             <div class="gallery-filters reveal" role="group" aria-label="Filtrar galeria">
                 <button class="gallery-filter active" data-filter="all">Todos</button>
@@ -627,45 +494,44 @@
                 <button class="gitem reveal" data-cat="esporte" data-caption="Treino de vôlei — Turma sub-14"
                     aria-label="Ver foto: Treino de vôlei">
                     <div class="gthumb g1"></div>
-                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i></div>
+                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i><span>Ver foto</span></div>
                 </button>
                 <button class="gitem reveal tall" data-cat="eventos"
                     data-caption="Festa Junina 2023 — mais de 1.200 pessoas!" aria-label="Ver foto: Festa Junina">
                     <div class="gthumb g2"></div>
-                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i></div>
+                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i><span>Ver foto</span></div>
                 </button>
                 <button class="gitem reveal" data-cat="educacao"
                     data-caption="Aula de reforço escolar — turma de Matemática" aria-label="Ver foto: Aula de reforço">
                     <div class="gthumb g3"></div>
-                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i></div>
+                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i><span>Ver foto</span></div>
                 </button>
                 <button class="gitem reveal" data-cat="social"
                     data-caption="Distribuição de cestas básicas — dezembro 2023" aria-label="Ver foto: Cestas básicas">
                     <div class="gthumb g4"></div>
-                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i></div>
+                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i><span>Ver foto</span></div>
                 </button>
                 <button class="gitem reveal wide" data-cat="esporte"
                     data-caption="Final do Torneio Intercomunitário — campeões!" aria-label="Ver foto: Torneio final">
                     <div class="gthumb g5"></div>
-                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i></div>
+                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i><span>Ver foto</span></div>
                 </button>
                 <button class="gitem reveal" data-cat="educacao" data-caption="Formatura do curso de informática — 2023"
                     aria-label="Ver foto: Formatura informática">
                     <div class="gthumb g6"></div>
-                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i></div>
+                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i><span>Ver foto</span></div>
                 </button>
                 <button class="gitem reveal" data-cat="eventos"
                     data-caption="Natal Solidário — 300 crianças presenteadas" aria-label="Ver foto: Natal Solidário">
                     <div class="gthumb g7"></div>
-                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i></div>
+                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i><span>Ver foto</span></div>
                 </button>
                 <button class="gitem reveal" data-cat="social" data-caption="Mutirão de limpeza — rua principal"
                     aria-label="Ver foto: Mutirão de limpeza">
                     <div class="gthumb g8"></div>
-                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i></div>
+                    <div class="goverlay"><i class="ph ph-magnifying-glass-plus"></i><span>Ver foto</span></div>
                 </button>
             </div>
-
         </div>
     </section>
 
@@ -683,22 +549,18 @@
                 class="ph ph-caret-right"></i></button>
     </div>
 
-    <!-- =====================================================
-       COMO AJUDAR
-  ===================================================== -->
+    <!-- ===================== COMO AJUDAR ===================== -->
     <section class="section" id="ajudar">
         <div class="container">
-
-            <div class="section-header reveal">
-                <span class="tag">Faça parte</span>
-                <h2 class="section-title">Como<br /><em>Ajudar</em></h2>
-                <p class="section-desc">Existem muitas formas de transformar realidades. Escolha a que faz sentido para
-                    você.</p>
-            </div>
+            <div class="section-label reveal"><span class="label-line"></span><span>Faça parte</span></div>
+            <h2 class="section-title reveal">Como<br /><em>Ajudar</em></h2>
+            <p class="section-desc reveal">Existem muitas formas de transformar realidades. Escolha a que faz sentido
+                para você.</p>
 
             <div class="help-grid">
 
                 <article class="help-card reveal">
+                    <div class="help-card__number">01</div>
                     <div class="help-card__ico"><i class="ph ph-map-pin"></i></div>
                     <h3>Doações no Local</h3>
                     <p>Prefere ajudar de perto? Você pode levar sua doação diretamente até a nossa unidade e fazer parte
@@ -707,72 +569,60 @@
                         <li>Recebemos alimentos, roupas e materiais</li>
                         <li>Entrega rápida e sem burocracia</li>
                         <li>Contato direto com a comunidade</li>
-                        <li>Faça sua contribuição com segurança</li>
                     </ul>
-                    <p><strong>Endereço:</strong><br>
-                        Estrada do Campinho, 4700 - Cosmos<br>
-                        Rio de Janeiro - RJ<br>
-                        CEP: 23066-540</p>
-
+                    <p class="help-address"><i class="ph ph-map-pin-simple"></i> Estrada do Campinho, 4700 -
+                        Cosmos<br />Rio de Janeiro - RJ · CEP 23066-540</p>
                     <a href="https://www.google.com/maps?q=Estrada+do+Campinho,+4700+-+Cosmos,+Rio+de+Janeiro+-+RJ,+23066-540"
-                        target="_blank" class="btn btn--primary btn--sm">
-                        Ver no Google Maps
+                        target="_blank" rel="noopener" class="btn btn--outlined">
+                        <i class="ph ph-map-pin"></i> Ver no Mapa
                     </a>
                 </article>
 
-                <article class="help-card help-card--highlight reveal">
+                <article class="help-card help-card--featured reveal">
                     <div class="help-card__badge">Mais procurado</div>
+                    <div class="help-card__number">02</div>
                     <div class="help-card__ico"><i class="ph ph-gift"></i></div>
-
-                    <h3>Doações</h3>
-
-                    <p>
-                        Você pode fazer a diferença na vida de muitas pessoas através de doações simples. Recebemos
-                        diversos itens que ajudam a atender famílias em situação de vulnerabilidade.
-                    </p>
-
+                    <h3>Doações de Itens</h3>
+                    <p>Você pode fazer a diferença através de doações simples. Recebemos diversos itens que ajudam
+                        famílias em situação de vulnerabilidade.</p>
                     <ul class="help-list">
                         <li>Doação de alimentos</li>
                         <li>Doação de roupas</li>
                         <li>Doação de livros</li>
                         <li>Produtos de higiene pessoal</li>
-                        <li>Outros itens essenciais</li>
                     </ul>
-
-                    <a href="https://wa.me/5521920356707?text=Olá!%20Gostaria%20de%20fazer%20uma%20doação%20(alimentos,%20roupas,%20livros%20ou%20produtos%20de%20higiene).%20Como%20posso%20ajudar?"
-                        target="_blank" class="btn btn--primary btn--sm">
-                        Quero ajudar pelo WhatsApp
+                    <a href="https://wa.me/5521920356707?text=Olá!%20Gostaria%20de%20fazer%20uma%20doação."
+                        target="_blank" rel="noopener" class="btn btn--primary">
+                        <i class="ph ph-whatsapp-logo"></i> Quero ajudar pelo WhatsApp
                     </a>
                 </article>
 
-                <!-- Card 03 — Doação financeira / PIX -->
                 <article class="help-card reveal">
-                    <div class="help-card__ico"><i class="ph ph-coins"></i></div>
+                    <div class="help-card__number">03</div>
+                    <div class="help-card__ico"><i class="ph ph-currency-circle-dollar"></i></div>
                     <h3>Doação via PIX</h3>
-                    <p>Sua ajuda sempre será um impulso para continuarmos com esse projeto que chega
-                        direto a quem precisa.</p>
+                    <p>Sua ajuda chega direto a quem precisa, de forma rápida e segura.</p>
                     <div class="pix-box">
-                        <span class="pix-label"><i class="ph ph-qr-code"></i> Nossa chave PIX</span>
-                        <span class="pix-key">CNPJ 15.018.522/0001-98</span>
+                        <span class="pix-label"><i class="ph ph-qr-code"></i> Chave PIX</span>
+                        <span class="pix-key">15.018.522/0001-98</span>
                         <button class="pix-copy" data-pix="15018522000198" aria-label="Copiar chave PIX">
                             <i class="ph ph-copy"></i> Copiar chave
                         </button>
                     </div>
                     <ul class="help-list">
-                        <li>Rápido</li>
-                        <li>Prático</li>
+                        <li>Rápido e seguro</li>
+                        <li>Impacto imediato</li>
                         <li>Ajuda quem mais precisa</li>
                     </ul>
-                    <a href="#contato" class="btn btn--primary btn--sm">Falar com o Instituto</a>
+                    <a href="#contato" class="btn btn--outlined">Falar com o Instituto</a>
                 </article>
-
-
 
             </div>
 
-            <!-- Faixa CTA -->
+            <!-- Banner CTA -->
             <div class="cta-banner reveal">
-                <div class="cta-banner__text">
+                <div class="cta-banner__bg"></div>
+                <div class="cta-banner__content">
                     <h3>Pronto para fazer a diferença?</h3>
                     <p>Nossa equipe apresenta as melhores formas de você contribuir.</p>
                 </div>
@@ -787,78 +637,72 @@
         </div>
     </section>
 
-    <!-- =====================================================
-       CONTATO
-  ===================================================== -->
-    <section class="section section--alt" id="contato">
+    <!-- ===================== CONTATO ===================== -->
+    <section class="section section--warm" id="contato">
         <div class="container">
-
-            <div class="section-header reveal">
-                <span class="tag">Fale com a gente</span>
-                <h2 class="section-title">Entre em<br /><em>Contato</em></h2>
-            </div>
+            <div class="section-label reveal"><span class="label-line"></span><span>Fale com a gente</span></div>
+            <h2 class="section-title reveal">Entre em<br /><em>Contato</em></h2>
 
             <div class="contact-grid">
 
-                <!-- Informações -->
                 <address class="contact-info reveal">
-
-                    <div class="contact-item"><i class="ph ph-map-pin"></i>
-                        <div><strong>Endereço</strong>
-                            <p>Estr. do Campinho, 4700<br />Cosmos, Rio de Janeiro — RJ, CEP: 23066-540</p>
+                    <div class="contact-item">
+                        <div class="contact-item__ico"><i class="ph ph-map-pin"></i></div>
+                        <div>
+                            <strong>Endereço</strong>
+                            <p>Estr. do Campinho, 4700<br />Cosmos, Rio de Janeiro — RJ</p>
                         </div>
                     </div>
-                    <!-- <div class="contact-item"><i class="ph ph-phone"></i>
-                        <div><strong>Telefone</strong>
-                            <p><a href="tel:+552133334444">(21) 92035-6707</a></p>
-                        </div>
-                    </div> -->
-                    <div class="contact-item"><i class="ph ph-whatsapp-logo"></i>
-                        <div><strong>WhatsApp</strong>
+                    <div class="contact-item">
+                        <div class="contact-item__ico"><i class="ph ph-whatsapp-logo"></i></div>
+                        <div>
+                            <strong>WhatsApp</strong>
                             <p><a href="https://wa.me/5521920356707" target="_blank" rel="noopener">(21) 92035-6707</a>
                             </p>
                         </div>
                     </div>
-                    <div class="contact-item"><i class="ph ph-envelope"></i>
-                        <div><strong>E-mail</strong>
+                    <div class="contact-item">
+                        <div class="contact-item__ico"><i class="ph ph-envelope"></i></div>
+                        <div>
+                            <strong>E-mail</strong>
                             <p><a href="mailto:ongviasolidaria@gmail.com">ongviasolidaria@gmail.com</a></p>
                         </div>
                     </div>
-                    <div class="contact-item"><i class="ph ph-clock"></i>
-                        <div><strong>Funcionamento</strong>
-                            <p>Segunda a Sexta: 8h às 17h<br />Sábado: 10:00 às 12:10</p>
+                    <div class="contact-item">
+                        <div class="contact-item__ico"><i class="ph ph-clock"></i></div>
+                        <div>
+                            <strong>Funcionamento</strong>
+                            <p>Segunda a Sexta: 8h às 17h<br />Sábado: 10h às 12h10</p>
                         </div>
                     </div>
 
                     <div class="contact-social">
-                        <span>Nos siga nas redes:</span>
+                        <span>Nos siga nas redes sociais:</span>
                         <div class="social-row">
-                            <a href="https://www.instagram.com/institutoviasolidaria?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-pill" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-                            <a href="#" class="social-pill" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
-                            <!-- <a href="#" class="social-pill" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a> -->
-                            <!-- <a href="#" class="social-pill" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a> -->
+                            <a href="https://www.instagram.com/institutoviasolidaria" target="_blank" rel="noopener"
+                                class="social-pill" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                            <a href="#" class="social-pill" aria-label="Facebook"><i
+                                    class="ph ph-facebook-logo"></i></a>
                         </div>
                     </div>
-
                 </address>
 
-                <!-- Formulário -->
                 <div class="contact-form-wrap reveal">
                     <form class="contact-form" id="contact-form" novalidate>
                         <h3>Envie uma mensagem</h3>
 
                         <div class="field">
-                            <label for="f-name">Nome completo <span>*</span></label>
+                            <label for="f-name">Nome completo <span aria-hidden="true">*</span></label>
                             <input type="text" id="f-name" name="nome" placeholder="Seu nome completo"
-                                autocomplete="name" required />
+                                autocomplete="name" required aria-required="true" />
                             <span class="field-error" id="err-name" role="alert"></span>
                         </div>
 
                         <div class="field-row">
                             <div class="field">
-                                <label for="f-email">E-mail <span>*</span></label>
+                                <label for="f-email">E-mail <span aria-hidden="true">*</span></label>
                                 <input type="email" id="f-email" name="email" placeholder="seu@email.com"
-                                    autocomplete="email" required />
+                                    autocomplete="email" required aria-required="true" />
                                 <span class="field-error" id="err-email" role="alert"></span>
                             </div>
                             <div class="field">
@@ -869,10 +713,9 @@
                         </div>
 
                         <div class="field">
-                            <label for="f-assunto">Assunto <span>*</span></label>
-                            <select id="f-assunto" name="assunto" required>
+                            <label for="f-assunto">Assunto <span aria-hidden="true">*</span></label>
+                            <select id="f-assunto" name="assunto" required aria-required="true">
                                 <option value="">Selecione um assunto</option>
-                                <!-- <option value="voluntariado">Voluntariado</option> -->
                                 <option value="parceria">Parceria institucional</option>
                                 <option value="doacao">Doação</option>
                                 <option value="imprensa">Imprensa / mídia</option>
@@ -882,14 +725,14 @@
                         </div>
 
                         <div class="field">
-                            <label for="f-msg">Mensagem <span>*</span></label>
+                            <label for="f-msg">Mensagem <span aria-hidden="true">*</span></label>
                             <textarea id="f-msg" name="mensagem" placeholder="Escreva sua mensagem aqui..." rows="5"
-                                required></textarea>
+                                required aria-required="true"></textarea>
                             <span class="field-error" id="err-msg" role="alert"></span>
                         </div>
 
                         <div class="field field--check">
-                            <input type="checkbox" id="f-lgpd" name="lgpd" required />
+                            <input type="checkbox" id="f-lgpd" name="lgpd" required aria-required="true" />
                             <label for="f-lgpd">Concordo com o uso dos meus dados para fins de contato, conforme a
                                 <strong>LGPD</strong>.</label>
                             <span class="field-error" id="err-lgpd" role="alert"></span>
@@ -899,7 +742,7 @@
                             <i class="ph ph-paper-plane-tilt"></i> Enviar mensagem
                         </button>
 
-                        <div class="form-feedback" id="form-feedback" hidden></div>
+                        <div class="form-feedback" id="form-feedback" hidden role="alert"></div>
                     </form>
                 </div>
 
@@ -907,83 +750,87 @@
         </div>
     </section>
 
-    <!-- =====================================================
-       FOOTER
-  ===================================================== -->
+    <!-- ===================== FOOTER ===================== -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
+        <div class="footer-top">
+            <div class="container footer-top__inner">
+                <p class="footer-top__text">Transformando vidas através do esporte, educação e cultura</p>
+                <a href="https://wa.me/5521920356707" target="_blank" rel="noopener" class="btn btn--whatsapp">
+                    <i class="ph ph-whatsapp-logo"></i> Fale pelo WhatsApp
+                </a>
+            </div>
+        </div>
 
-                <div class="footer-brand">
-                    <a href="#home" class="nav-logo footer-logo">
-                        <img src="logo.png" alt="Raízes Vivas" class="nav-logo__img">
-                    </a>
-                    <p>Cultura, Educação, Saúde, Esporte e Assitência como caminhos de dignidade para a sociedade!
-                    </p>
-                    <p class="footer-cnpj">CNPJ: 15.018.522/0001-98</p>
-                    <div class="social-row">
-                        <a href="https://www.instagram.com/institutoviasolidaria?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                            class="social-pill" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-                        <a href="#" class="social-pill" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
-                        <!-- <a href="#" class="social-pill" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a> -->
-                        <!-- <a href="#" class="social-pill" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a> -->
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="#home" class="nav-logo footer-logo">
+                            <img src="logo.png" alt="Instituto Via Solidária" class="nav-logo__img">
+                        </a>
+                        <p>Cultura, Educação, Saúde, Esporte e Assistência como caminhos de dignidade para a sociedade.
+                        </p>
+                        <p class="footer-cnpj">CNPJ: 15.018.522/0001-98</p>
+                        <div class="social-row">
+                            <a href="https://www.instagram.com/institutoviasolidaria" target="_blank" rel="noopener"
+                                class="social-pill" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                            <a href="#" class="social-pill" aria-label="Facebook"><i
+                                    class="ph ph-facebook-logo"></i></a>
+                        </div>
                     </div>
+
+                    <nav class="footer-nav" aria-label="Navegação principal">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="#sobre">Sobre nós</a></li>
+                            <li><a href="#missao">Missão e Valores</a></li>
+                            <li><a href="#projetos">Projetos</a></li>
+                            <li><a href="#galeria">Galeria</a></li>
+                            <li><a href="#ajudar">Como Ajudar</a></li>
+                            <li><a href="#contato">Contato</a></li>
+                        </ul>
+                    </nav>
+
+                    <nav class="footer-nav" aria-label="Projetos">
+                        <h4>Projetos</h4>
+                        <ul>
+                            <li><a href="#projetos">🏐 Escolinha de Vôlei</a></li>
+                            <li><a href="#projetos">🍽️ Cozinha Comunitária</a></li>
+                            <li><a href="#projetos">🎓 Cursos Profissionalizantes</a></li>
+                            <li><a href="#projetos">📚 Biblioteca Comunitária</a></li>
+                            <li><a href="#projetos">🩺 Clínica Social</a></li>
+                            <li><a href="#projetos">📖 Complementação Educacional</a></li>
+                        </ul>
+                    </nav>
+
+                    <address class="footer-contact">
+                        <h4>Contato</h4>
+                        <ul>
+                            <li><i class="ph ph-map-pin"></i> Estr. do Campinho, 4700 — Cosmos, RJ</li>
+                            <li><i class="ph ph-whatsapp-logo"></i> <a href="https://wa.me/5521920356707"
+                                    target="_blank" rel="noopener">(21) 92035-6707</a></li>
+                            <li><i class="ph ph-envelope"></i> <a
+                                    href="mailto:ongviasolidaria@gmail.com">ongviasolidaria@gmail.com</a></li>
+                        </ul>
+                    </address>
                 </div>
 
-                <nav class="footer-nav" aria-label="Navegação">
-                    <h4>Navegação</h4>
-                    <ul>
-                        <li><a href="#sobre">Sobre nós</a></li>
-                        <li><a href="#missao">Missão e Valores</a></li>
-                        <li><a href="#projetos">Projetos</a></li>
-                        <li><a href="#galeria">Galeria</a></li>
-                        <li><a href="#ajudar">Como Ajudar</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </nav>
-
-                <nav class="footer-nav" aria-label="Projetos">
-                    <h4>Projetos</h4>
-                    <ul>
-                        <li><a href="#projetos">🏐 Escolinha de Vôlei</a></li>
-                        <li><a href="#projetos">🤝 Cozinha Comunitária</a></li>
-                        <li><a href="#projetos">🎓 Formação & Oportunidades</a></li>
-                        <li><a href="#projetos">📚 Biblioteca Comunitária</a></li>
-                        <li><a href="#projetos">🩺 Clínica Social</a></li>
-                        <li><a href="#projetos">📖 Complementação Educacional</a></li>
-                    </ul>
-                </nav>
-
-                <address class="footer-contact">
-                    <h4>Contato rápido</h4>
-                    <ul>
-                        <li><i class="ph ph-map-pin"></i> Estr. do Campinho, 4700<br />Cosmos, Rio de Janeiro — RJ, CEP:
-                            23066-540</li>
-                        <!-- <li><i class="ph ph-phone"></i> <a href="tel:+552133334444">(21) 920356707</a></li> -->
-                        <li><i class="ph ph-whatsapp-logo"></i> <a href="https://wa.me/5521920356707" target="_blank"
-                                rel="noopener">(21) 92035-6707</a></li>
-                        <li><i class="ph ph-envelope"></i> <a
-                                href="mailto:ongviasolidaria@gmail.com">ongviasolidaria@gmail.com</a></li>
-                    </ul>
-                </address>
-
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; <span id="footer-year"></span> Instituto Via Solidária. Todos os direitos reservados.</p>
-                <p>Feito com <i class="ph ph-heart-straight"></i> pela comunidade, para a comunidade.</p>
+                <div class="footer-bottom">
+                    <p>&copy; <span id="footer-year"></span> Instituto Via Solidária. Todos os direitos reservados.</p>
+                    <p>Feito com <i class="ph ph-heart-straight"></i> pela comunidade, para a comunidade.</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Botão WhatsApp flutuante -->
+    <!-- FAB WhatsApp -->
     <a href="https://wa.me/5521920356707?text=Olá!%20Quero%20saber%20mais%20sobre%20o%20Instituto%20Via%20Solidária"
-        class="fab-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+        class="fab-wa" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp">
         <i class="ph ph-whatsapp-logo"></i>
         <span class="fab-wa__tip">Fale conosco!</span>
     </a>
 
-    <!-- Voltar ao topo -->
+    <!-- Back to top -->
     <button class="back-top" id="back-top" aria-label="Voltar ao topo">
         <i class="ph ph-arrow-up"></i>
     </button>
