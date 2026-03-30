@@ -258,6 +258,7 @@ select {
     color: var(--text-2);
     max-width: 540px;
     line-height: 1.7;
+    padding-bottom: 50px;
 }
 
 /* ----------------------------------------------------------------
@@ -1420,28 +1421,40 @@ select {
     box-shadow: var(--s4);
 }
 
+/*Esporte*/
 .panel-visual--1 {
-    background: linear-gradient(135deg, #1a5538 0%, #2d8860 40%, #3aaa78 100%);
+    /*background: linear-gradient(135deg, #1a5538 0%, #2d8860 40%, #3aaa78 100%);*/
+    background-image: url(/src/images/volei.png);
 }
 
+/*Cozinha Comunitária*/
 .panel-visual--2 {
-    background: linear-gradient(135deg, #4a2a10 0%, #8a5020 40%, #c07838 100%);
+    /* background: linear-gradient(135deg, #4a2a10 0%, #8a5020 40%, #c07838 100%); */
+    background-image: url();
 }
 
+/*Cursos Profissionalizantes*/
 .panel-visual--3 {
-    background: linear-gradient(135deg, #183060 0%, #2848a8 40%, #4868d0 100%);
+    /* background: linear-gradient(135deg, #183060 0%, #2848a8 40%, #4868d0 100%); */
+    background-image: url(/src/images/cursos.png);
 }
 
+/*Biblioteca Comunitária*/
 .panel-visual--4 {
-    background: linear-gradient(135deg, #2a1060 0%, #583898 40%, #7858c0 100%);
+    /* background: linear-gradient(135deg, #2a1060 0%, #583898 40%, #7858c0 100%); */
+    background-image: url(/src/images/biblioteca.png);
 }
 
+/*Clínica Social*/
 .panel-visual--5 {
-    background: linear-gradient(135deg, #101840 0%, #203880 40%, #3858a8 100%);
+    /* background: linear-gradient(135deg, #101840 0%, #203880 40%, #3858a8 100%); */
+    background-image: url(/src/images/clinica.png);
 }
 
+/*Completamentação Educacional*/
 .panel-visual--6 {
-    background: linear-gradient(135deg, #1a3020 0%, #2a6040 40%, #409868 100%);
+    /* background: linear-gradient(135deg, #1a3020 0%, #2a6040 40%, #409868 100%); */
+    background-image: url();
 }
 
 /* Decoração geométrica dentro do visual */
@@ -2543,6 +2556,34 @@ select {
     html {
         scroll-behavior: auto;
     }
+}
+
+
+/* Barra de progresso autoplay nas tabs */
+.tab {
+    overflow: hidden;
+    /* necessário para a barra não vazar */
+}
+
+.tab-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: rgba(255, 255, 255, .55);
+    border-radius: var(--r-full);
+    pointer-events: none;
+    transition: none;
+}
+
+.tab.active .tab-progress {
+    background: rgba(255, 255, 255, .75);
+}
+
+/* Garante que o tab tenha position relative para o absolute da barra */
+.tab {
+    position: relative;
 }
 
 /* ----------------------------------------------------------------

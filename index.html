@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Instituto Via Solidária – Transformando vidas através do esporte, educação e cultura na comunidade de Cosmos, Rio de Janeiro." />
+    <meta name="description" content="Instituto Via Solidária – Transformando vidas!" />
     <title>Instituto Via Solidária</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/src/images/favicon.png">
 
     <!-- Fontes premium: Playfair Display + DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +19,7 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="src/css/style.css" />
 </head>
 
 <body>
@@ -27,7 +28,7 @@
     <header class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
-                <img src="logo.png" alt="Instituto Via Solidária" class="nav-logo__img">
+                <img src="/src/images/logo.png" alt="Instituto Via Solidária" class="nav-logo__img">
             </a>
 
             <nav class="nav-links" id="nav-links">
@@ -56,7 +57,7 @@
     <nav class="mobile-menu" id="mobile-menu" aria-hidden="true">
         <div class="mobile-menu__header">
             <a href="#home" class="nav-logo">
-                <img src="logo.png" alt="Instituto Via Solidária" class="nav-logo__img">
+                <img src="/src/images/logo.png" alt="Instituto Via Solidária" class="nav-logo__img">
             </a>
             <button class="mobile-menu__close" id="mobile-close" aria-label="Fechar menu">
                 <i class="ph ph-x"></i>
@@ -223,7 +224,7 @@
                     </div>
 
                     <div class="sobre-origem reveal">
-                        <div class="sobre-origem__icon"><i class="ph ph-seedling"></i></div>
+                        <div class="sobre-origem__icon"><i class="ph ph-plant"></i></div>
                         <div>
                             <strong>Nossa origem</strong>
                             <p>O Instituto Via Solidária nasceu em 2003, a partir do sonho e convicção de Anselmo Jund
@@ -328,20 +329,26 @@
                     ela e para ela.</p>
             </div>
 
-            <!-- Tabs redesenhadas -->
+            <!-- Tabs -->
             <div class="tabs" role="tablist" aria-label="Projetos">
-                <button class="tab active" role="tab" data-panel="esporte" aria-selected="true"><i
-                        class="ph ph-volleyball"></i><span>Esporte</span></button>
-                <button class="tab" role="tab" data-panel="cozinha" aria-selected="false"><i
-                        class="ph ph-cooking-pot"></i><span>Cozinha Comunitária</span></button>
-                <button class="tab" role="tab" data-panel="cursos" aria-selected="false"><i
-                        class="ph ph-graduation-cap"></i><span>Cursos</span></button>
-                <button class="tab" role="tab" data-panel="biblioteca" aria-selected="false"><i
-                        class="ph ph-books"></i><span>Biblioteca</span></button>
-                <button class="tab" role="tab" data-panel="clinica" aria-selected="false"><i
-                        class="ph ph-heartbeat"></i><span>Clínica Social</span></button>
-                <button class="tab" role="tab" data-panel="complementacao" aria-selected="false"><i
-                        class="ph ph-chalkboard-teacher"></i><span>Complementação</span></button>
+                <button class="tab active" role="tab" data-panel="esporte" aria-selected="true">
+                    <i class="ph ph-volleyball"></i> Esporte
+                </button>
+                <button class="tab" role="tab" data-panel="cozinha" aria-selected="false">
+                    <i class="ph ph-hands-clapping"></i> Cozinha Comunitária
+                </button>
+                <button class="tab" role="tab" data-panel="cursos" aria-selected="false">
+                    <i class="ph ph-book-open-text"></i> Cursos Profissionalizantes
+                </button>
+                <button class="tab" role="tab" data-panel="biblioteca" aria-selected="false">
+                    <i class="ph ph-confetti"></i> Biblioteca Comunitária
+                </button>
+                <button class="tab" role="tab" data-panel="clinica" aria-selected="false">
+                    <i class="ph ph-confetti"></i> Clínica Social
+                </button>
+                <button class="tab" role="tab" data-panel="complementacao" aria-selected="false">
+                    <i class="ph ph-confetti"></i> Completamentação Educacional
+                </button>
             </div>
 
             <!-- Painéis -->
@@ -445,6 +452,7 @@
                             <span class="pill"><i class="ph ph-book"></i> Psicopedagogia</span>
                             <span class="pill"><i class="ph ph-user-circle"></i> Psicanálise</span>
                             <span class="pill"><i class="ph ph-person-simple-run"></i> Psicomotricidade</span>
+                            <span class="pill"><i class="ph ph-carrot"></i> Nutrição</span>
                         </div>
                     </div>
                 </div>
@@ -766,7 +774,7 @@
                 <div class="footer-grid">
                     <div class="footer-brand">
                         <a href="#home" class="nav-logo footer-logo">
-                            <img src="logo.png" alt="Instituto Via Solidária" class="nav-logo__img">
+                            <img src="/src/images/logo.png" alt="Instituto Via Solidária" class="nav-logo__img">
                         </a>
                         <p>Cultura, Educação, Saúde, Esporte e Assistência como caminhos de dignidade para a sociedade.
                         </p>
@@ -835,7 +843,7 @@
         <i class="ph ph-arrow-up"></i>
     </button>
 
-    <script src="script.js"></script>
+    <script src="/src/JS/script.js"></script>
 </body>
 
 </html>

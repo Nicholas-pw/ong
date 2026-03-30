@@ -175,34 +175,78 @@ function initHeroCarousel() {
 }
 
 /* ================================================================
-   5. ABAS DE PROJETOS
+   5. ABAS DE PROJETOS (com autoplay)
 ================================================================ */
 function initProjectTabs() {
     const tabs = $$('.tab');
     const panels = $$('.panel');
+    const TAB_INTERVAL = 8000;
+    let tabTimer = null;
+    let currentTab = 0;
 
+    // Injeta barra de progresso em cada tab
     tabs.forEach(tab => {
+        const bar = document.createElement('span');
+        bar.className = 'tab-progress';
+        tab.appendChild(bar);
+    });
+
+    function activateTab(idx) {
+        currentTab = (idx + tabs.length) % tabs.length;
+        const tab = tabs[currentTab];
+        const target = tab.dataset.panel;
+
+        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
+
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const panel = document.querySelector(`#panel-${target}`);
+        if (panel) {
+            panel.classList.add('active');
+            panel.hidden = false;
+            panel.querySelectorAll('.reveal').forEach(el => {
+                el.classList.remove('visible');
+                void el.offsetWidth;
+                el.classList.add('visible');
+            });
+        }
+
+        startTabProgress();
+    }
+
+    function startTabProgress() {
+        tabs.forEach(t => {
+            const bar = t.querySelector('.tab-progress');
+            if (bar) { bar.style.transition = 'none'; bar.style.width = '0%'; }
+        });
+        const activeBar = tabs[currentTab] && tabs[currentTab].querySelector('.tab-progress');
+        if (activeBar) {
+            void activeBar.offsetWidth;
+            activeBar.style.transition = `width ${TAB_INTERVAL}ms linear`;
+            activeBar.style.width = '100%';
+        }
+    }
+
+    function startTabAutoplay() {
+        stopTabAutoplay();
+        tabTimer = setInterval(() => activateTab(currentTab + 1), TAB_INTERVAL);
+    }
+
+    function stopTabAutoplay() {
+        clearInterval(tabTimer);
+    }
+
+    tabs.forEach((tab, idx) => {
         tab.addEventListener('click', () => {
-            const target = tab.dataset.panel;
-
-            tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-            panels.forEach(p => { p.classList.remove('active'); p.hidden = true; });
-
-            tab.classList.add('active');
-            tab.setAttribute('aria-selected', 'true');
-
-            const panel = $(`#panel-${target}`);
-            if (panel) {
-                panel.classList.add('active');
-                panel.hidden = false;
-                $$('.reveal', panel).forEach(el => {
-                    el.classList.remove('visible');
-                    void el.offsetWidth;
-                    el.classList.add('visible');
-                });
-            }
+            activateTab(idx);
+            startTabAutoplay();
         });
     });
+
+    startTabProgress();
+    startTabAutoplay();
 }
 
 /* ================================================================
