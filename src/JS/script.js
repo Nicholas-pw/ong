@@ -453,12 +453,12 @@ function initContactForm() {
         const assunto = ASSUNTOS[data.assunto] ?? data.assunto;
         const tel = data.telefone?.trim() || 'Não informado';
         return (
-            `🌱 *Nova mensagem — Instituto Via Solidária*\n\n` +
-            `👤 *Nome:* ${data.nome}\n` +
-            `📧 *E-mail:* ${data.email}\n` +
-            `📱 *Telefone:* ${tel}\n` +
-            `📋 *Assunto:* ${assunto}\n\n` +
-            `💬 *Mensagem:*\n${data.mensagem}`
+            ` *Nova mensagem — Instituto Via Solidária*\n\n` +
+            ` *Nome:* ${data.nome}\n` +
+            ` *E-mail:* ${data.email}\n` +
+            ` *Telefone:* ${tel}\n` +
+            ` *Assunto:* ${assunto}\n\n` +
+            ` *Mensagem:*\n${data.mensagem}`
         );
     }
 
